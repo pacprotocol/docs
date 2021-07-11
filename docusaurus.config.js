@@ -2,16 +2,26 @@
 module.exports = {
   title: 'PAC Protocol',
   tagline: 'All-in-one Documentations',
+
   url: 'https://docs.pacprotocol.com',
   baseUrl: '/',
+  organizationName: 'pacprotocol', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
+
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  organizationName: 'pacprotocol', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  scripts: [
+    {
+      src: '/js/fix-location.js',
+      async: false,
+      defer: false,
+    }
+  ],
+
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'de']
+    locales: ['en']
   },
   themeConfig: {
     navbar: {
