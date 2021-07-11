@@ -20,16 +20,16 @@ For the following step we're using the user root. For production usage it's reco
 
 ### Step 1 - Get/Setup binaries of PAC Protocol Core
 
-We're pulling the binaries of "PAC Global v0.15.2" and grant permission of "pacglobald" and "pacglobal-cli" to make it executeable.
+We're pulling the binaries of "PAC Global v0.15.2" and grant permission of "pacprotocold" and "pacprotocol-cli" to make it executeable.
 
 ```bash
 cd /root # we're using root directory in this example. You can obviously choose your owh directory.
-wget --progress=dot -e dot_bytes=100M -e dots_in_line=1 https://github.com/PACGlobalOfficial/PAC/releases/download/v0.15.2/pacglobal-v0.15.2-lin64.tgz
-tar -xzvf pacglobal-v0.15.2-lin64.tgz
-rm -f pacglobal-v0.15.2-lin64.tgz
-mv -v pacglobal-v0.15.2-lin64 PACProtocol
-chmod +x PACProtocol/pacglobald
-chmod +x PACProtocol/pacglobal-cli
+wget https://github.com/pacprotocol/pacprotocol/releases/download/v0.17.0.4/pacprotocol-v0.17.0.4-lin64.tgz
+tar -xzvf pacprotocol-v0.17.0.4-lin64.tgz
+rm -f pacprotocol-v0.17.0.4-lin64.tgz
+mv -v pacprotocol-v0.17.0.4-lin64 PACProtocol
+chmod +x PACProtocol/pacprotocold
+chmod +x PACProtocol/pacprotocol-cli
 ```
 
 ### Step 2 - Configuring the wallet
