@@ -1,0 +1,36 @@
+---
+sidebar_position: 2
+---
+
+# Creating Raw Transactions
+
+If you need absolute control of the transactions, you can create your own & broadcast transaction without using [sendtoaddress](/docs/core/developers/pac-protocol-core/client-commands/sendtoaddress) or [sendmany](/docs/core/developers/pac-protocol-core/client-commands/sendmany)
+
+### Make Transaction:
+
+```bash
+rawHexString = createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,"data":"hex",...} ( locktime )
+```
+[createrawtransaction documentation](/docs/core/developers/pac-protocol-core/client-commands/createrawtransaction)
+
+`rawHexString` is the variable and it contains the value of raw transaction in string (encoded as hex).
+
+Before broadcasting you need to sign the transaction first to validate that you own input's private key
+
+### Sign Transaction:
+
+```bash
+signedRawHexString = signrawtransaction rawHexString ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
+```
+[signrawtransaction documentation](/docs/core/developers/pac-protocol-core/client-commands/signrawtransaction)
+
+`signedRawHexString` is the same as `rawHexString` except it's signed and ready to be broadcasted to the network.
+
+### Broadcast Transaction:
+
+```
+transactionId = sendrawtransaction signedRawHexString ( allowhighfees instantsend bypasslimits)
+```
+[signrawtransaction documentation](/docs/core/developers/pac-protocol-core/client-commands/sendrawtransaction)
+
+`transactionId` is the txid of your transaction which you can now track if it got any confirmations or not.

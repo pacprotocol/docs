@@ -1,0 +1,67 @@
+---
+sidebar_position: 122
+---
+
+# getnewaddress
+## Command
+
+```bash
+pacprotocol-cli getnewaddress ( "account" )
+```
+
+Returns a new PACGlobal address for receiving payments.
+If 'account' is specified (DEPRECATED), it is added to the address book 
+so payments received with the address will be credited to 'account'.
+
+
+
+## Arguments
+
+### `account` 
+*(string, optional)*
+
+DEPRECATED. The account name for the address to be linked to. If not provided, the default account "" is used. It can also be set to the empty string "" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.
+
+
+## Examples
+```bash
+pacglobal-cli getnewaddress 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"address"    #(string) The new dash address
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getnewaddress
+```
+Will produce following output:
+
+
+```bash
+getnewaddress ( "account" )
+
+Returns a new PACGlobal address for receiving payments.
+If 'account' is specified (DEPRECATED), it is added to the address book 
+so payments received with the address will be credited to 'account'.
+
+Arguments:
+1. "account"        (string, optional) DEPRECATED. The account name for the address to be linked to. If not provided, the default account "" is used. It can also be set to the empty string "" to represent the default account. The account does not need to exist, it will be created if there is no account by the given name.
+
+Result:
+"address"    (string) The new dash address
+
+Examples:
+> pacglobal-cli getnewaddress 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

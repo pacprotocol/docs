@@ -1,0 +1,70 @@
+---
+sidebar_position: 115
+---
+
+# dumpprivkey
+## Command
+
+```bash
+pacprotocol-cli dumpprivkey "address"
+```
+
+Reveals the private key corresponding to 'address'.
+Then the importprivkey can be used with this output
+
+
+
+## Arguments
+
+### `address` <span class='asterisk'>*</span>
+*(string, required)*
+
+The dash address for the private key
+
+
+## Examples
+```bash
+pacglobal-cli dumpprivkey "myaddress"
+```
+
+```bash
+pacglobal-cli importprivkey "mykey"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpprivkey", "params": ["myaddress"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"key"                #(string) The private key
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help dumpprivkey
+```
+Will produce following output:
+
+
+```bash
+dumpprivkey "address"
+
+Reveals the private key corresponding to 'address'.
+Then the importprivkey can be used with this output
+
+Arguments:
+1. "address"   (string, required) The dash address for the private key
+
+Result:
+"key"                (string) The private key
+
+Examples:
+> pacglobal-cli dumpprivkey "myaddress"
+> pacglobal-cli importprivkey "mykey"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpprivkey", "params": ["myaddress"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

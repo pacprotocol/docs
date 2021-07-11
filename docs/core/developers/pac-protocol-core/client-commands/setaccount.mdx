@@ -1,0 +1,63 @@
+---
+sidebar_position: 154
+---
+
+# setaccount
+## Command
+
+```bash
+pacprotocol-cli setaccount "address" "account"
+```
+
+DEPRECATED. Sets the account associated with the given address.
+
+
+
+## Arguments
+
+### `address` <span class='asterisk'>*</span>
+*(string, required)*
+
+The dash address to be associated with an account.
+
+
+### `account` <span class='asterisk'>*</span>
+*(string, required)*
+
+The account to assign the address to.
+
+
+## Examples
+```bash
+pacglobal-cli setaccount "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" "tabby"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setaccount", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG", "tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help setaccount
+```
+Will produce following output:
+
+
+```bash
+setaccount "address" "account"
+
+DEPRECATED. Sets the account associated with the given address.
+
+Arguments:
+1. "address"         (string, required) The dash address to be associated with an account.
+2. "account"         (string, required) The account to assign the address to.
+
+Examples:
+> pacglobal-cli setaccount "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" "tabby"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setaccount", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG", "tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

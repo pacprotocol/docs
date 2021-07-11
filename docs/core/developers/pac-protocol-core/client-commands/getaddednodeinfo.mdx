@@ -1,0 +1,94 @@
+---
+sidebar_position: 79
+---
+
+# getaddednodeinfo
+## Command
+
+```bash
+pacprotocol-cli getaddednodeinfo ( "node" )
+```
+
+Returns information about the given added node, or all added nodes
+(note that onetry addnodes are not listed here)
+
+
+
+## Arguments
+
+### `node` 
+*(string, optional)*
+
+If provided, return information about this specific node, otherwise all nodes are returned.
+
+
+## Examples
+```bash
+pacglobal-cli getaddednodeinfo 
+```
+
+```bash
+pacglobal-cli getaddednodeinfo "192.168.0.201"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": ["192.168.0.201"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+[
+  {
+    "addednode" : "192.168.0.201",   #(string) The node IP address or name #(as provided to addnode)
+    "connected" : true|false,          #(boolean) If connected
+    "addresses" : [                    #(list of objects) Only when connected = true
+       {
+         "address" : "192.168.0.201:9999",  #(string) The pacglobal server IP and port we're connected to
+         "connected" : "outbound"           #(string) connection, inbound or outbound
+       }
+     ]
+  }
+  ,...
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getaddednodeinfo
+```
+Will produce following output:
+
+
+```bash
+getaddednodeinfo ( "node" )
+
+Returns information about the given added node, or all added nodes
+(note that onetry addnodes are not listed here)
+
+Arguments:
+1. "node"   (string, optional) If provided, return information about this specific node, otherwise all nodes are returned.
+
+Result:
+[
+  {
+    "addednode" : "192.168.0.201",   (string) The node IP address or name (as provided to addnode)
+    "connected" : true|false,          (boolean) If connected
+    "addresses" : [                    (list of objects) Only when connected = true
+       {
+         "address" : "192.168.0.201:9999",  (string) The pacglobal server IP and port we're connected to
+         "connected" : "outbound"           (string) connection, inbound or outbound
+       }
+     ]
+  }
+  ,...
+]
+
+Examples:
+> pacglobal-cli getaddednodeinfo 
+> pacglobal-cli getaddednodeinfo "192.168.0.201"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddednodeinfo", "params": ["192.168.0.201"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

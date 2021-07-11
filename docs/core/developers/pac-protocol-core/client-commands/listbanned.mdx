@@ -1,0 +1,47 @@
+---
+sidebar_position: 84
+---
+
+# listbanned
+## Command
+
+```bash
+pacprotocol-cli listbanned
+```
+
+List all banned IPs/Subnets.
+
+
+
+## Examples
+```bash
+pacglobal-cli listbanned 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help listbanned
+```
+Will produce following output:
+
+
+```bash
+listbanned
+
+List all banned IPs/Subnets.
+
+Examples:
+> pacglobal-cli listbanned 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

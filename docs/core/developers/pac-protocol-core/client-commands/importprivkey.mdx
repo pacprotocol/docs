@@ -1,0 +1,121 @@
+---
+sidebar_position: 132
+---
+
+# importprivkey
+## Command
+
+```bash
+pacprotocol-cli importprivkey "privkey" ( "label" ) ( rescan )
+```
+
+Adds a private key (as returned by dumpprivkey) to your wallet. Requires a new wallet backup.
+
+
+
+## Arguments
+
+### `privkey` <span class='asterisk'>*</span>
+*(string, required)*
+
+The private key (see dumpprivkey)
+
+
+### `label` 
+*(string, optional, default="")*
+
+An optional label
+
+
+### `rescan` 
+*(boolean, optional, default=true)*
+
+Rescan the wallet for transactions
+
+
+## Examples
+Note: This call can take minutes to complete if rescan is true.
+
+
+
+
+
+Dump a private key
+
+```bash
+pacglobal-cli dumpprivkey "myaddress"
+```
+
+
+
+Import the private key with rescan
+
+```bash
+pacglobal-cli importprivkey "mykey"
+```
+
+
+
+Import using a label and without rescan
+
+```bash
+pacglobal-cli importprivkey "mykey" "testing" false
+```
+
+
+
+Import using default blank label and without rescan
+
+```bash
+pacglobal-cli importprivkey "mykey" "" false
+```
+
+
+
+As a JSON-RPC call
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importprivkey", "params": ["mykey", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help importprivkey
+```
+Will produce following output:
+
+
+```bash
+importprivkey "privkey" ( "label" ) ( rescan )
+
+Adds a private key (as returned by dumpprivkey) to your wallet. Requires a new wallet backup.
+
+Arguments:
+1. "privkey"          (string, required) The private key (see dumpprivkey)
+2. "label"            (string, optional, default="") An optional label
+3. rescan               (boolean, optional, default=true) Rescan the wallet for transactions
+
+Note: This call can take minutes to complete if rescan is true.
+
+Examples:
+
+Dump a private key
+> pacglobal-cli dumpprivkey "myaddress"
+
+Import the private key with rescan
+> pacglobal-cli importprivkey "mykey"
+
+Import using a label and without rescan
+> pacglobal-cli importprivkey "mykey" "testing" false
+
+Import using default blank label and without rescan
+> pacglobal-cli importprivkey "mykey" "" false
+
+As a JSON-RPC call
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "importprivkey", "params": ["mykey", "testing", false] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

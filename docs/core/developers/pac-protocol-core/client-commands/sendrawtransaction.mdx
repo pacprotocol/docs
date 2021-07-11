@@ -1,0 +1,119 @@
+---
+sidebar_position: 96
+---
+
+# sendrawtransaction
+## Command
+
+```bash
+pacprotocol-cli sendrawtransaction "hexstring" ( allowhighfees instantsend bypasslimits)
+```
+
+Submits raw transaction (serialized, hex-encoded) to local node and network.
+
+Also see createrawtransaction and signrawtransaction calls.
+
+
+
+## Arguments
+
+### `hexstring` <span class='asterisk'>*</span>
+*(string, required)*
+
+The hex string of the raw transaction)
+
+
+### `allowhighfees` 
+*(boolean, optional, default=false)*
+
+Allow high fees
+
+
+### `instantsend` 
+*(boolean, optional, default=false)*
+
+Deprecated and ignored
+
+
+### `bypasslimits` 
+*(boolean, optional, default=false)*
+
+Bypass transaction policy limits
+
+
+## Examples
+
+
+Create a transaction
+
+```bash
+pacglobal-cli createrawtransaction "[{\"txid\" : \"mytxid\",\"vout\":0}]" "{\"myaddress\":0.01}"
+```
+
+Sign the transaction, and get back the hex
+
+```bash
+pacglobal-cli signrawtransaction "myhex"
+```
+
+
+
+Send the transaction (signed hex)
+
+```bash
+pacglobal-cli sendrawtransaction "signedhex"
+```
+
+
+
+As a json rpc call
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["signedhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"hex"             #(string) The transaction hash in hex
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help sendrawtransaction
+```
+Will produce following output:
+
+
+```bash
+sendrawtransaction "hexstring" ( allowhighfees instantsend bypasslimits)
+
+Submits raw transaction (serialized, hex-encoded) to local node and network.
+
+Also see createrawtransaction and signrawtransaction calls.
+
+Arguments:
+1. "hexstring"    (string, required) The hex string of the raw transaction)
+2. allowhighfees  (boolean, optional, default=false) Allow high fees
+3. instantsend    (boolean, optional, default=false) Deprecated and ignored
+4. bypasslimits   (boolean, optional, default=false) Bypass transaction policy limits
+
+Result:
+"hex"             (string) The transaction hash in hex
+
+Examples:
+
+Create a transaction
+> pacglobal-cli createrawtransaction "[{\"txid\" : \"mytxid\",\"vout\":0}]" "{\"myaddress\":0.01}"
+Sign the transaction, and get back the hex
+> pacglobal-cli signrawtransaction "myhex"
+
+Send the transaction (signed hex)
+> pacglobal-cli sendrawtransaction "signedhex"
+
+As a json rpc call
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendrawtransaction", "params": ["signedhex"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

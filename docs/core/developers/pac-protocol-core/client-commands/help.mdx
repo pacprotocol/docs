@@ -1,0 +1,58 @@
+---
+sidebar_position: 42
+---
+
+# help
+## Command
+
+```bash
+pacprotocol-cli help ( "command" ) ("subCommand")
+```
+
+List all commands, or get help for a specified command.
+
+
+
+## Arguments
+
+### `command` 
+*(string, optional)*
+
+The command to get help on
+
+
+### `subCommand` 
+*(string, optional)*
+
+The subcommand to get help on. Please not that not all subcommands support this at the moment
+
+
+## Result
+```bash
+
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help help
+```
+Will produce following output:
+
+
+```bash
+help ( "command" ) ("subCommand")
+
+List all commands, or get help for a specified command.
+
+Arguments:
+1. "command"     (string, optional) The command to get help on
+2. "subCommand"  (string, optional) The subcommand to get help on. Please not that not all subcommands support this at the moment
+
+Result:
+"text"     (string) The help text
+
+```
+

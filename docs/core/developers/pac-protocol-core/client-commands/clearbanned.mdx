@@ -1,0 +1,47 @@
+---
+sidebar_position: 77
+---
+
+# clearbanned
+## Command
+
+```bash
+pacprotocol-cli clearbanned
+```
+
+Clear all banned IPs.
+
+
+
+## Examples
+```bash
+pacglobal-cli clearbanned 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help clearbanned
+```
+Will produce following output:
+
+
+```bash
+clearbanned
+
+Clear all banned IPs.
+
+Examples:
+> pacglobal-cli clearbanned 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "clearbanned", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

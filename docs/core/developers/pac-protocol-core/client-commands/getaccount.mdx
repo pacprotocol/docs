@@ -1,0 +1,63 @@
+---
+sidebar_position: 118
+---
+
+# getaccount
+## Command
+
+```bash
+pacprotocol-cli getaccount "address"
+```
+
+DEPRECATED. Returns the account associated with the given address.
+
+
+
+## Arguments
+
+### `address` <span class='asterisk'>*</span>
+*(string, required)*
+
+The dash address for account lookup.
+
+
+## Examples
+```bash
+pacglobal-cli getaccount "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccount", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"accountname"        #(string) the account address
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getaccount
+```
+Will produce following output:
+
+
+```bash
+getaccount "address"
+
+DEPRECATED. Returns the account associated with the given address.
+
+Arguments:
+1. "address"         (string, required) The dash address for account lookup.
+
+Result:
+"accountname"        (string) the account address
+
+Examples:
+> pacglobal-cli getaccount "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaccount", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

@@ -1,0 +1,70 @@
+---
+sidebar_position: 111
+---
+
+# abortrescan
+## Command
+
+```bash
+pacprotocol-cli abortrescan
+```
+
+Stops current wallet rescan triggered e.g. by an importprivkey call.
+
+
+
+## Examples
+
+
+Import a private key
+
+```bash
+pacglobal-cli importprivkey "mykey"
+```
+
+
+
+Abort the running wallet rescan
+
+```bash
+pacglobal-cli abortrescan 
+```
+
+
+
+As a JSON-RPC call
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abortrescan", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help abortrescan
+```
+Will produce following output:
+
+
+```bash
+abortrescan
+
+Stops current wallet rescan triggered e.g. by an importprivkey call.
+
+Examples:
+
+Import a private key
+> pacglobal-cli importprivkey "mykey"
+
+Abort the running wallet rescan
+> pacglobal-cli abortrescan 
+
+As a JSON-RPC call
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "abortrescan", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

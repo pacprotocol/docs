@@ -1,0 +1,74 @@
+---
+sidebar_position: 72
+---
+
+# prioritisetransaction
+## Command
+
+```bash
+pacprotocol-cli prioritisetransaction <txid> <fee delta>
+```
+
+prioritisetransaction &lt;txid&gt; &lt;fee delta&gt;
+Accepts the transaction into mined blocks at a higher (or lower) priority
+
+
+
+## Arguments
+
+### `txid` <span class='asterisk'>*</span>
+*(string, required)*
+
+The transaction id.
+
+
+### `fee_delta` <span class='asterisk'>*</span>
+*(numeric, required)*
+
+The fee value (in duffs) to add (or subtract, if negative).
+                  The fee is not actually paid, only the algorithm for selecting transactions into a block
+                  considers the transaction as it would have paid a higher (or lower) fee.
+
+
+## Examples
+```bash
+pacglobal-cli prioritisetransaction "txid" 10000
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+true              #(boolean) Returns true
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help prioritisetransaction
+```
+Will produce following output:
+
+
+```bash
+prioritisetransaction <txid> <fee delta>
+Accepts the transaction into mined blocks at a higher (or lower) priority
+
+Arguments:
+1. "txid"       (string, required) The transaction id.
+2. fee_delta      (numeric, required) The fee value (in duffs) to add (or subtract, if negative).
+                  The fee is not actually paid, only the algorithm for selecting transactions into a block
+                  considers the transaction as it would have paid a higher (or lower) fee.
+
+Result:
+true              (boolean) Returns true
+
+Examples:
+> pacglobal-cli prioritisetransaction "txid" 10000
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "prioritisetransaction", "params": ["txid", 10000] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

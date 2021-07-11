@@ -1,0 +1,80 @@
+---
+sidebar_position: 2
+---
+
+# getaddressbalance
+## Command
+
+```bash
+pacprotocol-cli getaddressbalance
+```
+
+Returns the balance for an address(es) (requires addressindex to be enabled).
+
+
+
+## Arguments
+
+```json
+{
+  "addresses"
+    [
+      "address"  (string) The base58check encoded address
+      ,...
+    ]
+}
+```
+## Examples
+```bash
+pacglobal-cli getaddressbalance '{"addresses": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg"]}'
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+## Result
+```json
+{
+  "balance"  #(string) The current balance in duffs
+  "received"  #(string) The total number of duffs received #(including change)
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getaddressbalance
+```
+Will produce following output:
+
+
+```bash
+getaddressbalance
+
+Returns the balance for an address(es) (requires addressindex to be enabled).
+
+Arguments:
+{
+  "addresses"
+    [
+      "address"  (string) The base58check encoded address
+      ,...
+    ]
+}
+
+Result:
+{
+  "balance"  (string) The current balance in duffs
+  "received"  (string) The total number of duffs received (including change)
+}
+
+Examples:
+> pacglobal-cli getaddressbalance '{"addresses": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg"]}'
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressbalance", "params": [{"addresses": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg"]}] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

@@ -1,0 +1,16 @@
+---
+sidebar_position: 3
+---
+
+# Setting up Swapfile
+
+Setting up swapfile is **optional, but recommended**, in case if the core happens to take more than 1 GB of memory. This helps to avoid crashing core unintended.
+
+```bash
+sudo swapoff -a
+sudo fallocate -l 5G /swapfile #5GB of swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+```

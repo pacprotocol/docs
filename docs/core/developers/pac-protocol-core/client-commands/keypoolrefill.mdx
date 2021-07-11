@@ -1,0 +1,56 @@
+---
+sidebar_position: 137
+---
+
+# keypoolrefill
+## Command
+
+```bash
+pacprotocol-cli keypoolrefill ( newsize )
+```
+
+Fills the keypool.
+
+
+
+## Arguments
+
+### `newsize` 
+*(numeric, optional, default=1000)*
+
+The new keypool size
+
+
+## Examples
+```bash
+pacglobal-cli keypoolrefill 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "keypoolrefill", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help keypoolrefill
+```
+Will produce following output:
+
+
+```bash
+keypoolrefill ( newsize )
+
+Fills the keypool.
+
+Arguments:
+1. newsize     (numeric, optional, default=1000) The new keypool size
+
+Examples:
+> pacglobal-cli keypoolrefill 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "keypoolrefill", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

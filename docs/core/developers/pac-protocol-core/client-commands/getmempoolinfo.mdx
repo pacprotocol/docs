@@ -1,0 +1,68 @@
+---
+sidebar_position: 25
+---
+
+# getmempoolinfo
+## Command
+
+```bash
+pacprotocol-cli getmempoolinfo
+```
+
+Returns details on the active state of the TX memory pool.
+
+
+
+## Examples
+```bash
+pacglobal-cli getmempoolinfo 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+## Result
+```json
+{
+  "size": xxxxx,               #(numeric) Current tx count
+  "bytes": xxxxx,              #(numeric) Sum of all tx sizes
+  "usage": xxxxx,              #(numeric) Total memory usage for the mempool
+  "maxmempool": xxxxx,         #(numeric) Maximum memory usage for the mempool
+  "mempoolminfee": xxxxx       #(numeric) Minimum feerate #(PAC per KB) for tx to be accepted
+  "instantsendlocks": xxxxx,   #(numeric) Number of unconfirmed instant send locks
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getmempoolinfo
+```
+Will produce following output:
+
+
+```bash
+getmempoolinfo
+
+Returns details on the active state of the TX memory pool.
+
+Result:
+{
+  "size": xxxxx,               (numeric) Current tx count
+  "bytes": xxxxx,              (numeric) Sum of all tx sizes
+  "usage": xxxxx,              (numeric) Total memory usage for the mempool
+  "maxmempool": xxxxx,         (numeric) Maximum memory usage for the mempool
+  "mempoolminfee": xxxxx       (numeric) Minimum feerate (PAC per KB) for tx to be accepted
+  "instantsendlocks": xxxxx,   (numeric) Number of unconfirmed instant send locks
+}
+
+Examples:
+> pacglobal-cli getmempoolinfo 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

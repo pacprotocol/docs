@@ -1,0 +1,78 @@
+---
+sidebar_position: 140
+---
+
+# listaddressgroupings
+## Command
+
+```bash
+pacprotocol-cli listaddressgroupings
+```
+
+Lists groups of addresses which have had their common ownership
+made public by common use as inputs or as the resulting change
+in past transactions
+
+
+
+## Examples
+```bash
+pacglobal-cli listaddressgroupings 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaddressgroupings", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+## Result
+```bash
+[
+  [
+    [
+      "address",            #(string) The dash address
+      amount,                 #(numeric) The amount in PAC
+      "account"             #(string, optional) DEPRECATED. The account
+    ]
+    ,...
+  ]
+  ,...
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help listaddressgroupings
+```
+Will produce following output:
+
+
+```bash
+listaddressgroupings
+
+Lists groups of addresses which have had their common ownership
+made public by common use as inputs or as the resulting change
+in past transactions
+
+Result:
+[
+  [
+    [
+      "address",            (string) The dash address
+      amount,                 (numeric) The amount in PAC
+      "account"             (string, optional) DEPRECATED. The account
+    ]
+    ,...
+  ]
+  ,...
+]
+
+Examples:
+> pacglobal-cli listaddressgroupings 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listaddressgroupings", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

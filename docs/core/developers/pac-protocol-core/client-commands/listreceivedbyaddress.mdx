@@ -1,0 +1,121 @@
+---
+sidebar_position: 143
+---
+
+# listreceivedbyaddress
+## Command
+
+```bash
+pacprotocol-cli listreceivedbyaddress ( minconf addlocked include_empty include_watchonly)
+```
+
+List incoming payments grouped by receiving address.
+
+
+
+## Arguments
+
+### `minconf` 
+*(numeric, optional, default=1)*
+
+The minimum number of confirmations before payments are included.
+
+
+### `addlocked` 
+*(bool, optional, default=false)*
+
+Whether to include transactions locked via InstaPAC.
+
+
+### `include_empty` 
+*(bool, optional, default=false)*
+
+Whether to include addresses that haven't received any payments.
+
+
+### `include_watchonly` 
+*( bool, optional, default=false)*
+
+Whether to include watch-only addresses (see 'importaddress').
+
+
+## Examples
+```bash
+pacglobal-cli listreceivedbyaddress 
+```
+
+```bash
+pacglobal-cli listreceivedbyaddress 6 false true
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, false, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+[
+  {
+    "involvesWatchonly" : true,        #(bool) Only returned if imported addresses were involved in transaction
+    "address" : "receivingaddress",    #(string) The receiving address
+    "account" : "accountname",         #(string) DEPRECATED. The account of the receiving address. The default account is "".
+    "amount" : x.xxx,                  #(numeric) The total amount in PAC received by the address
+    "confirmations" : n                #(numeric) The number of confirmations of the most recent transaction included.
+                                                 If 'addlocked' is true, the number of confirmations can be less than
+                                                 configured for transactions locked via InstaPAC
+    "label" : "label",               #(string) A comment for the address/transaction, if any
+    "txids": [
+       n,                                #(numeric) The ids of transactions received with the address 
+       ...
+    ]
+  }
+  ,...
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help listreceivedbyaddress
+```
+Will produce following output:
+
+
+```bash
+listreceivedbyaddress ( minconf addlocked include_empty include_watchonly)
+
+List incoming payments grouped by receiving address.
+
+Arguments:
+1. minconf           (numeric, optional, default=1) The minimum number of confirmations before payments are included.
+2. addlocked         (bool, optional, default=false) Whether to include transactions locked via InstaPAC.
+3. include_empty     (bool, optional, default=false) Whether to include addresses that haven't received any payments.
+4. include_watchonly (bool, optional, default=false) Whether to include watch-only addresses (see 'importaddress').
+
+Result:
+[
+  {
+    "involvesWatchonly" : true,        (bool) Only returned if imported addresses were involved in transaction
+    "address" : "receivingaddress",    (string) The receiving address
+    "account" : "accountname",         (string) DEPRECATED. The account of the receiving address. The default account is "".
+    "amount" : x.xxx,                  (numeric) The total amount in PAC received by the address
+    "confirmations" : n                (numeric) The number of confirmations of the most recent transaction included.
+                                                 If 'addlocked' is true, the number of confirmations can be less than
+                                                 configured for transactions locked via InstaPAC
+    "label" : "label",               (string) A comment for the address/transaction, if any
+    "txids": [
+       n,                                (numeric) The ids of transactions received with the address 
+       ...
+    ]
+  }
+  ,...
+]
+
+Examples:
+> pacglobal-cli listreceivedbyaddress 
+> pacglobal-cli listreceivedbyaddress 6 false true
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, false, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+
