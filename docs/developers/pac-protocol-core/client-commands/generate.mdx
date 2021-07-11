@@ -1,0 +1,71 @@
+---
+sidebar_position: 23
+---
+
+# generate
+## Command
+
+```bash
+pacprotocol-cli generate nblocks ( maxtries )
+```
+
+Mine up to nblocks blocks immediately (before the RPC call returns) to an address in the wallet.
+
+
+
+## Arguments
+
+### `nblocks` <span class='asterisk'>*</span>
+*(numeric, required)*
+
+How many blocks are generated immediately.
+
+
+### `maxtries` 
+*(numeric, optional)*
+
+How many iterations to try (default = 1000000).
+
+
+## Examples
+
+
+Generate 11 blocks
+
+```bash
+pacprotocol-cli generate 11
+```
+## Result
+```bash
+[ blockhashes ]     #(array) hashes of blocks generated
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help generate
+```
+Will produce following output:
+
+
+```bash
+generate nblocks ( maxtries )
+
+Mine up to nblocks blocks immediately (before the RPC call returns) to an address in the wallet.
+
+Arguments:
+1. nblocks      (numeric, required) How many blocks are generated immediately.
+2. maxtries     (numeric, optional) How many iterations to try (default = 1000000).
+
+Result:
+[ blockhashes ]     (array) hashes of blocks generated
+
+Examples:
+
+Generate 11 blocks
+> pacprotocol-cli generate 11
+
+```
+

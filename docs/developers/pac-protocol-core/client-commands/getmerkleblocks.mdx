@@ -1,0 +1,83 @@
+---
+sidebar_position: 59
+---
+
+# getmerkleblocks
+## Command
+
+```bash
+pacprotocol-cli getmerkleblocks "filter" "hash" ( count )
+```
+
+Returns an array of hex-encoded merkleblocks for &lt;count&gt; blocks starting from &lt;hash&gt; which match &lt;filter&gt;.
+
+
+
+## Arguments
+
+### `filter` <span class='asterisk'>*</span>
+*(string, required)*
+
+The hex encoded bloom filter
+
+
+### `hash` <span class='asterisk'>*</span>
+*(string, required)*
+
+The block hash
+
+
+### `count` 
+*(numeric, optional, default/max=2000)*
+
+
+
+
+## Examples
+```bash
+pacprotocol-cli getmerkleblocks "2303028005802040100040000008008400048141010000f8400420800080025004000004130000000000000001" "00000000007e1432d2af52e8463278bf556b55cf5049262f25634557e2e91202" 2000
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmerkleblocks", "params": ["2303028005802040100040000008008400048141010000f8400420800080025004000004130000000000000001" "00000000007e1432d2af52e8463278bf556b55cf5049262f25634557e2e91202" 2000] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+[
+  "data",                        #(string)  A string that is serialized, hex-encoded data for a merkleblock.
+  ...
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getmerkleblocks
+```
+Will produce following output:
+
+
+```bash
+getmerkleblocks "filter" "hash" ( count )
+
+Returns an array of hex-encoded merkleblocks for <count> blocks starting from <hash> which match <filter>.
+
+Arguments:
+1. "filter"        (string, required) The hex encoded bloom filter
+2. "hash"          (string, required) The block hash
+3. count           (numeric, optional, default/max=2000)
+
+Result:
+[
+  "data",                        (string)  A string that is serialized, hex-encoded data for a merkleblock.
+  ...
+]
+
+Examples:
+> pacprotocol-cli getmerkleblocks "2303028005802040100040000008008400048141010000f8400420800080025004000004130000000000000001" "00000000007e1432d2af52e8463278bf556b55cf5049262f25634557e2e91202" 2000
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getmerkleblocks", "params": ["2303028005802040100040000008008400048141010000f8400420800080025004000004130000000000000001" "00000000007e1432d2af52e8463278bf556b55cf5049262f25634557e2e91202" 2000] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

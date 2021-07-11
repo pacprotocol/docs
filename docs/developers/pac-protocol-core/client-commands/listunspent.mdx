@@ -1,0 +1,189 @@
+---
+sidebar_position: 104
+---
+
+# listunspent
+## Command
+
+```bash
+pacprotocol-cli listunspent ( minconf maxconf  ["addresses",...] [include_unsafe] [query_options])
+```
+
+Returns array of unspent transaction outputs
+with between minconf and maxconf (inclusive) confirmations.
+Optionally filter to only include txouts paid to specified addresses.
+
+
+
+## Arguments
+
+### `minconf` 
+*(numeric, optional, default=1)*
+
+The minimum confirmations to filter
+
+
+### `maxconf` 
+*(numeric, optional, default=9999999)*
+
+The maximum confirmations to filter
+
+
+### `addresses` 
+*(string)*
+
+A json array of PAC addresses to filter
+    
+
+
+```json
+[
+    "address"     (string) PAC address
+    ,...
+]
+```
+
+
+
+### `include_unsafe` 
+*( bool, optional, default=true)*
+
+Include outputs that are not safe to spend
+                  See description of "safe" attribute below.
+
+
+### `query_options` 
+*(json, optional)*
+
+JSON with query options
+    
+
+```json
+{
+    "minimumAmount"    (numeric or string, default=0) Minimum value of each UTXO in PAC
+    "maximumAmount"    (numeric or string, default=unlimited) Maximum value of each UTXO in PAC
+    "maximumCount"     (numeric or string, default=unlimited) Maximum number of UTXOs
+    "minimumSumAmount" (numeric or string, default=unlimited) Minimum sum value of all UTXOs in PAC
+    "coinType"       (numeric, default=0) Filter coinTypes as follows:
+                 0=ALL_COINS, 1=ONLY_FULLY_MIXED, 2=ONLY_READY_TO_MIX, 3=ONLY_NONDENOMINATED,
+                 4=ONLY_MASTERNODE_COLLATERAL, 5=ONLY_COINJOIN_COLLATERAL
+}
+```
+
+
+
+
+## Examples
+```bash
+pacprotocol-cli listunspent 
+```
+
+```bash
+pacprotocol-cli listunspent 6 9999999 "[\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\",\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcg\"]"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listunspent", "params": [6, 9999999 "[\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\",\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcg\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+```bash
+pacprotocol-cli listunspent 6 9999999 '[]' true '{ "minimumAmount": 0.005 }'
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listunspent", "params": [6, 9999999, [] , true, { "minimumAmount": 0.005 } ] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+Result
+[                   #(array of json object)
+  {
+    "txid" : "txid",          #(string) the transaction id 
+    "vout" : n,               #(numeric) the vout value
+    "address" : "address",    #(string) the PAC address
+    "label" : "label",        #(string) The associated label, or "" for the default label
+    "account" : "account",    #(string) DEPRECATED. This field will be removed in V0.18. To see this deprecated field, start pacprotocold with -deprecatedrpc=accounts. The associated account, or "" for the default account
+    "scriptPubKey" : "key",   #(string) the script key
+    "amount" : x.xxx,         #(numeric) the transaction output amount in PAC
+    "confirmations" : n,      #(numeric) The number of confirmations
+    "redeemScript" : n        #(string) The redeemScript if scriptPubKey is P2SH
+    "spendable" : xxx,        #(bool) Whether we have the private keys to spend this output
+    "solvable" : xxx,         #(bool) Whether we know how to spend this output, ignoring the lack of keys
+    "safe" : xxx              #(bool) Whether this output is considered safe to spend. Unconfirmed transactions
+                              from outside keys and unconfirmed replacement transactions are considered unsafe
+                              and are not eligible for spending by fundrawtransaction and sendtoaddress.
+    "coinjoin_rounds" : n     #(numeric) The number of CoinJoin rounds
+  }
+  ,...
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help listunspent
+```
+Will produce following output:
+
+
+```bash
+listunspent ( minconf maxconf  ["addresses",...] [include_unsafe] [query_options])
+
+Returns array of unspent transaction outputs
+with between minconf and maxconf (inclusive) confirmations.
+Optionally filter to only include txouts paid to specified addresses.
+
+Arguments:
+1. minconf          (numeric, optional, default=1) The minimum confirmations to filter
+2. maxconf          (numeric, optional, default=9999999) The maximum confirmations to filter
+3. "addresses"      (string) A json array of PAC addresses to filter
+    [
+      "address"     (string) PAC address
+      ,...
+    ]
+4. include_unsafe (bool, optional, default=true) Include outputs that are not safe to spend
+                  See description of "safe" attribute below.
+5. query_options    (json, optional) JSON with query options
+    {
+      "minimumAmount"    (numeric or string, default=0) Minimum value of each UTXO in PAC
+      "maximumAmount"    (numeric or string, default=unlimited) Maximum value of each UTXO in PAC
+      "maximumCount"     (numeric or string, default=unlimited) Maximum number of UTXOs
+      "minimumSumAmount" (numeric or string, default=unlimited) Minimum sum value of all UTXOs in PAC
+      "coinType"         (numeric, default=0) Filter coinTypes as follows:
+                         0=ALL_COINS, 1=ONLY_FULLY_MIXED, 2=ONLY_READY_TO_MIX, 3=ONLY_NONDENOMINATED,
+                         4=ONLY_MASTERNODE_COLLATERAL, 5=ONLY_COINJOIN_COLLATERAL
+    }
+
+Result
+[                   (array of json object)
+  {
+    "txid" : "txid",          (string) the transaction id 
+    "vout" : n,               (numeric) the vout value
+    "address" : "address",    (string) the PAC address
+    "label" : "label",        (string) The associated label, or "" for the default label
+    "account" : "account",    (string) DEPRECATED. This field will be removed in V0.18. To see this deprecated field, start pacprotocold with -deprecatedrpc=accounts. The associated account, or "" for the default account
+    "scriptPubKey" : "key",   (string) the script key
+    "amount" : x.xxx,         (numeric) the transaction output amount in PAC
+    "confirmations" : n,      (numeric) The number of confirmations
+    "redeemScript" : n        (string) The redeemScript if scriptPubKey is P2SH
+    "spendable" : xxx,        (bool) Whether we have the private keys to spend this output
+    "solvable" : xxx,         (bool) Whether we know how to spend this output, ignoring the lack of keys
+    "safe" : xxx              (bool) Whether this output is considered safe to spend. Unconfirmed transactions
+                              from outside keys and unconfirmed replacement transactions are considered unsafe
+                              and are not eligible for spending by fundrawtransaction and sendtoaddress.
+    "coinjoin_rounds" : n     (numeric) The number of CoinJoin rounds
+  }
+  ,...
+]
+
+Examples:
+> pacprotocol-cli listunspent 
+> pacprotocol-cli listunspent 6 9999999 "[\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\",\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcg\"]"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listunspent", "params": [6, 9999999 "[\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwg\",\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcg\"]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+> pacprotocol-cli listunspent 6 9999999 '[]' true '{ "minimumAmount": 0.005 }'
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listunspent", "params": [6, 9999999, [] , true, { "minimumAmount": 0.005 } ] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

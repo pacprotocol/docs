@@ -7,17 +7,11 @@ module.exports = {
   baseUrl: '/',
   organizationName: 'pacprotocol', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
-  scripts: [
-    {
-      src: '/js/fix-location.js',
-      async: false,
-      defer: false,
-    }
-  ],
 
   i18n: {
     defaultLocale: 'en',
@@ -25,18 +19,13 @@ module.exports = {
   },
   themeConfig: {
     navbar: {
-      title: 'PAC Protocol Docs',
+      title: 'PAC Protocol Documentation',
       logo: {
         alt: 'PAC Protocol Logo',
-        src: 'img/logo/PACProtocolIcon.svg',
+        src: '/img/logo/PACProtocolPrimaryLogo.svg',
+        srcDark: '/img/logo/PACProtocolPrimaryLogoWhite.svg',
       },
       items: [
-        {
-          to: "docs/core",
-          docId: 'intro',
-          position: 'left',
-          label: 'PAC Protocol',
-        },
         /*{
           to: "docs/yandna",
           docId: 'intro',
@@ -71,12 +60,24 @@ module.exports = {
           items: [
             {
               label: 'PAC Protocol',
-              to: '/docs/core',
+              to: '/',
+            },
+            {
+              label: 'Media Kit Download',
+              href: 'https://pacprotocol.com/files/pacprotocol-mediakit.zip',
+            },
+            {
+              label: 'Brand Guide',
+              href: 'https://pacprotocol.com/pdf/pacprotocol-brand-guide.pdf',
+            },
+            {
+              label: 'Bootstrap Download',
+              href: 'https://utils.pacprotocol.com/Bootstrap.tar.gz',
             },
           ],
         },
         {
-          title: 'Community',
+          title: 'Follow Us',
           items: [
             {
               label: 'Discord',
@@ -102,18 +103,55 @@ module.exports = {
               label: 'Instagram',
               href: 'https://www.instagram.com/pacprotocol/',
             },
+            {
+              label: 'TikTok',
+              href: 'https://www.tiktok.com/@pacprotocol/',
+            },
+            {
+              label: 'LinkedIn',
+              href: 'https://www.linkedin.com/company/pac-global-llc/',
+            },
+            {
+              label: 'YouTube',
+              href: 'https://www.youtube.com/channel/UC4RnYztNPllFyDEtv6DB4ww',
+            },
           ],
         },
         {
-          title: 'More',
+          title: 'Products',
           items: [
+            {
+              label: 'PACapp',
+              href: 'https://pacprotocol.com/network-product/pacapp',
+            },
+            {
+              label: 'yanSAFE',
+              href: 'https://pacprotocol.com/network-product/yansafe',
+            },
+            {
+              label: 'PAC Protocol Core',
+              href: 'https://github.com/pacprotocol/pacprotocol',
+            },
+          ],
+        },
+        {
+          title: 'Others',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/pacprotocol',
+            },
             {
               label: 'Website',
               href: 'https://pacprotocol.com',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/pacprotocol',
+              label: 'Terms & Conditions',
+              href: 'https://pacprotocol.com/terms-conditions',
+            },
+            {
+              label: 'Privacy Policy',
+              href: 'https://pacprotocol.com/privacy-policy',
             },
           ],
         },
@@ -121,14 +159,20 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} PAC Global LLC, Inc.`,
     },
     colorMode: {
-      defaultMode: 'dark'
-    }
+      defaultMode: 'light'
+    },
+    prism: {
+      theme: require('./src/js/pacprotocol-prism-theme'),
+    },
   },
+
   presets: [
     [
       '@docusaurus/preset-classic',
       {
         docs: {
+          routeBasePath: "/",
+          path: "docs",
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:

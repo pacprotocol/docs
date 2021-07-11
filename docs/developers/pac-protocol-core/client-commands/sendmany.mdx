@@ -1,0 +1,195 @@
+---
+sidebar_position: 123
+---
+
+# sendmany
+## Command
+
+```bash
+pacprotocol-cli sendmany "" {"address":amount,...} ( minconf addlocked "comment" ["address",...] subtractfeefrom use_is use_cj conf_target "estimate_mode")
+```
+
+Send multiple times. Amounts are double-precision floating point numbers.Note that the "fromaccount" argument has been removed in V0.17. To use this RPC with a "fromaccount" argument, restart
+pacprotocold with -deprecatedrpc=accounts
+
+
+
+
+## Arguments
+
+### `dummy` <span class='asterisk'>*</span>
+*(string, required)*
+
+Must be set to "" for backwards compatibility.
+
+
+### `amounts` <span class='asterisk'>*</span>
+*(string, required)*
+
+A json object with addresses and amounts
+    
+
+
+```json
+{
+    "address":amount     (numeric or string) The PAC address is the key, the numeric amount (can be string) in PAC is the value
+    ,...
+}
+```
+
+
+
+### `minconf` 
+*(numeric, optional, default=1)*
+
+Only use the balance confirmed at least this many times.
+
+
+### `addlocked` 
+*(bool, optional, default=false)*
+
+Whether to include transactions locked via InstantSend.
+
+
+### `comment` 
+*(string, optional)*
+
+A comment
+
+
+### `subtractfeefrom` 
+*(array, optional)*
+
+A json array with addresses.
+                           The fee will be equally deducted from the amount of each selected address.
+                           Those recipients will receive less pacprotocols than you enter in their corresponding amount field.
+                           If no addresses are specified here, the sender pays the fee.
+    
+
+
+```json
+[
+    "address"        (string) Subtract fee from this address
+    ,...
+]
+```
+
+
+
+### `use_is` 
+*(bool, optional, default=false)*
+
+Deprecated and ignored
+
+
+### `use_cj` 
+*(bool, optional, default=false)*
+
+Use CoinJoin funds only
+
+
+### `conf_target` 
+*(numeric, optional)*
+
+Confirmation target (in blocks)
+
+
+### `estimate_mode` 
+*(string, optional, default=UNSET)*
+
+The fee estimate mode, must be one of:
+       "UNSET"
+       "ECONOMICAL"
+       "CONSERVATIVE"
+
+
+## Examples
+
+
+Send two amounts to two different addresses:
+
+```bash
+pacprotocol-cli sendmany "" "{\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\":0.01,\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcG\":0.02}"
+```
+
+
+
+Send two amounts to two different addresses setting the confirmation and comment:
+
+```bash
+pacprotocol-cli sendmany "" "{\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\":0.01,\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcG\":0.02}" 6 false "testing"
+```
+
+
+
+As a json rpc call
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendmany", "params": ["", "{\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\":0.01,\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcG\":0.02}", 6, false, "testing"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"txid"                   #(string) The transaction id for the send. Only 1 transaction is created regardless of 
+                                    the number of addresses.
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help sendmany
+```
+Will produce following output:
+
+
+```bash
+sendmany "" {"address":amount,...} ( minconf addlocked "comment" ["address",...] subtractfeefrom use_is use_cj conf_target "estimate_mode")
+
+Send multiple times. Amounts are double-precision floating point numbers.Note that the "fromaccount" argument has been removed in V0.17. To use this RPC with a "fromaccount" argument, restart
+pacprotocold with -deprecatedrpc=accounts
+
+
+Arguments:
+1. "dummy"           (string, required) Must be set to "" for backwards compatibility.
+2. "amounts"               (string, required) A json object with addresses and amounts
+    {
+      "address":amount     (numeric or string) The PAC address is the key, the numeric amount (can be string) in PAC is the value
+      ,...
+    }
+3. minconf                 (numeric, optional, default=1) Only use the balance confirmed at least this many times.
+4. addlocked               (bool, optional, default=false) Whether to include transactions locked via InstantSend.
+5. "comment"               (string, optional) A comment
+6. subtractfeefrom         (array, optional) A json array with addresses.
+                           The fee will be equally deducted from the amount of each selected address.
+                           Those recipients will receive less pacprotocols than you enter in their corresponding amount field.
+                           If no addresses are specified here, the sender pays the fee.
+    [
+      "address"          (string) Subtract fee from this address
+      ,...
+    ]
+7. "use_is"                (bool, optional, default=false) Deprecated and ignored
+8. "use_cj"                (bool, optional, default=false) Use CoinJoin funds only
+9. conf_target            (numeric, optional) Confirmation target (in blocks)
+10. "estimate_mode"      (string, optional, default=UNSET) The fee estimate mode, must be one of:
+       "UNSET"
+       "ECONOMICAL"
+       "CONSERVATIVE"
+
+Result:
+"txid"                   (string) The transaction id for the send. Only 1 transaction is created regardless of 
+                                    the number of addresses.
+
+Examples:
+
+Send two amounts to two different addresses:
+> pacprotocol-cli sendmany "" "{\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\":0.01,\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcG\":0.02}"
+
+Send two amounts to two different addresses setting the confirmation and comment:
+> pacprotocol-cli sendmany "" "{\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\":0.01,\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcG\":0.02}" 6 false "testing"
+
+As a json rpc call
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendmany", "params": ["", "{\"XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG\":0.01,\"XuQQkwA4FYkq2XERzMY2CiAZhJTEDAbtcG\":0.02}", 6, false, "testing"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

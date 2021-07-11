@@ -1,0 +1,59 @@
+---
+sidebar_position: 146
+---
+
+# verifychainlock
+## Command
+
+```bash
+pacprotocol-cli verifychainlock "blockHash" "signature" ( blockHeight )
+```
+
+verifychainlock "blockHash" "signature" ( blockHeight )
+Test if a quorum signature is valid for a ChainLock.
+
+
+
+## Arguments
+
+### `blockHash` <span class='asterisk'>*</span>
+*(string, required)*
+
+The block hash of the ChainLock.
+
+
+### `signature` <span class='asterisk'>*</span>
+*(string, required)*
+
+The signature of the ChainLock.
+
+
+### `blockHeight` 
+*(integer, optional)*
+
+The height of the ChainLock. There will be an internal lookup of "blockHash" if this is not provided.
+
+
+
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help verifychainlock
+```
+Will produce following output:
+
+
+```bash
+verifychainlock "blockHash" "signature" ( blockHeight )
+Test if a quorum signature is valid for a ChainLock.
+
+Arguments:
+1. "blockHash"           (string, required) The block hash of the ChainLock.
+2. "signature"           (string, required) The signature of the ChainLock.
+3. blockHeight           (integer, optional) The height of the ChainLock. There will be an internal lookup of "blockHash" if this is not provided.
+
+```
+

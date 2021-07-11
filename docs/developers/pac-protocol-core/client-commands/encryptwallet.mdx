@@ -1,0 +1,109 @@
+---
+sidebar_position: 20
+---
+
+# encryptwallet
+## Command
+
+```bash
+pacprotocol-cli encryptwallet "passphrase"
+```
+
+Encrypts the wallet with 'passphrase'. This is for first time encryption.
+After this, any calls that interact with private keys such as sending or signing 
+will require the passphrase to be set prior the making these calls.
+Use the walletpassphrase call for this, and then walletlock call.
+If the wallet is already encrypted, use the walletpassphrasechange call.
+
+
+
+## Arguments
+
+### `passphrase` 
+*(string)*
+
+The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long.
+
+
+## Examples
+
+
+Encrypt your wallet
+
+```bash
+pacprotocol-cli encryptwallet "my pass phrase"
+```
+
+
+
+Now set the passphrase to use the wallet, such as for signing or sending pacprotocol
+
+```bash
+pacprotocol-cli walletpassphrase "my pass phrase"
+```
+
+
+
+Now we can do something like sign
+
+```bash
+pacprotocol-cli signmessage "address" "test message"
+```
+
+
+
+Now lock the wallet again by removing the passphrase
+
+```bash
+pacprotocol-cli walletlock 
+```
+
+
+
+As a json rpc call
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["my pass phrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help encryptwallet
+```
+Will produce following output:
+
+
+```bash
+encryptwallet "passphrase"
+
+Encrypts the wallet with 'passphrase'. This is for first time encryption.
+After this, any calls that interact with private keys such as sending or signing 
+will require the passphrase to be set prior the making these calls.
+Use the walletpassphrase call for this, and then walletlock call.
+If the wallet is already encrypted, use the walletpassphrasechange call.
+
+Arguments:
+1. "passphrase"    (string) The pass phrase to encrypt the wallet with. It must be at least 1 character, but should be long.
+
+Examples:
+
+Encrypt your wallet
+> pacprotocol-cli encryptwallet "my pass phrase"
+
+Now set the passphrase to use the wallet, such as for signing or sending pacprotocol
+> pacprotocol-cli walletpassphrase "my pass phrase"
+
+Now we can do something like sign
+> pacprotocol-cli signmessage "address" "test message"
+
+Now lock the wallet again by removing the passphrase
+> pacprotocol-cli walletlock 
+
+As a json rpc call
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "encryptwallet", "params": ["my pass phrase"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

@@ -1,0 +1,143 @@
+---
+sidebar_position: 125
+---
+
+# sendtoaddress
+## Command
+
+```bash
+pacprotocol-cli sendtoaddress "address" amount ( "comment" "comment_to" subtractfeefromamount use_is use_cj conf_target "estimate_mode")
+```
+
+Send an amount to a given address.
+
+
+
+## Arguments
+
+### `address` <span class='asterisk'>*</span>
+*(string, required)*
+
+The PAC address to send to.
+
+
+### `amount` <span class='asterisk'>*</span>
+*(numeric or string, required)*
+
+The amount in PAC to send. eg 0.1
+
+
+### `comment` 
+*(string, optional)*
+
+A comment used to store what the transaction is for. 
+                             This is not part of the transaction, just kept in your wallet.
+
+
+### `comment_to` 
+*(string, optional)*
+
+A comment to store the name of the person or organization 
+                             to which you're sending the transaction. This is not part of the 
+                             transaction, just kept in your wallet.
+
+
+### `subtractfeefromamount` 
+*(boolean, optional, default=false)*
+
+The fee will be deducted from the amount being sent.
+                             The recipient will receive less amount of PAC Protocol than you enter in the amount field.
+
+
+### `use_is` 
+*(bool, optional, default=false)*
+
+Deprecated and ignored
+
+
+### `use_cj` 
+*(bool, optional, default=false)*
+
+Use CoinJoin funds only
+
+
+### `conf_target` 
+*(numeric, optional)*
+
+Confirmation target (in blocks)
+
+
+### `estimate_mode` 
+*(string, optional, default=UNSET)*
+
+The fee estimate mode, must be one of:
+       "UNSET"
+       "ECONOMICAL"
+       "CONSERVATIVE"
+
+
+## Examples
+```bash
+pacprotocol-cli sendtoaddress "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" 0.1
+```
+
+```bash
+pacprotocol-cli sendtoaddress "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" 0.1 "donation" "seans outpost"
+```
+
+```bash
+pacprotocol-cli sendtoaddress "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" 0.1 "" "" true
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendtoaddress", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG", 0.1, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"txid"                  #(string) The transaction id.
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help sendtoaddress
+```
+Will produce following output:
+
+
+```bash
+sendtoaddress "address" amount ( "comment" "comment_to" subtractfeefromamount use_is use_cj conf_target "estimate_mode")
+
+Send an amount to a given address.
+
+Arguments:
+1. "address"            (string, required) The PAC address to send to.
+2. "amount"             (numeric or string, required) The amount in PAC to send. eg 0.1
+3. "comment"            (string, optional) A comment used to store what the transaction is for. 
+                             This is not part of the transaction, just kept in your wallet.
+4. "comment_to"         (string, optional) A comment to store the name of the person or organization 
+                             to which you're sending the transaction. This is not part of the 
+                             transaction, just kept in your wallet.
+5. subtractfeefromamount  (boolean, optional, default=false) The fee will be deducted from the amount being sent.
+                             The recipient will receive less amount of PAC Protocol than you enter in the amount field.
+6. "use_is"             (bool, optional, default=false) Deprecated and ignored
+7. "use_cj"             (bool, optional, default=false) Use CoinJoin funds only
+8. conf_target            (numeric, optional) Confirmation target (in blocks)
+9. "estimate_mode"      (string, optional, default=UNSET) The fee estimate mode, must be one of:
+       "UNSET"
+       "ECONOMICAL"
+       "CONSERVATIVE"
+
+Result:
+"txid"                  (string) The transaction id.
+
+Examples:
+> pacprotocol-cli sendtoaddress "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" 0.1
+> pacprotocol-cli sendtoaddress "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" 0.1 "donation" "seans outpost"
+> pacprotocol-cli sendtoaddress "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" 0.1 "" "" true
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "sendtoaddress", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG", 0.1, "donation", "seans outpost"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

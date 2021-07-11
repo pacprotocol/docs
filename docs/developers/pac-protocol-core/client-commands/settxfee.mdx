@@ -1,0 +1,63 @@
+---
+sidebar_position: 132
+---
+
+# settxfee
+## Command
+
+```bash
+pacprotocol-cli settxfee amount
+```
+
+Set the transaction fee per kB. Overwrites the paytxfee parameter.
+
+
+
+## Arguments
+
+### `amount` <span class='asterisk'>*</span>
+*(numeric or string, required)*
+
+The transaction fee in PAC/kB
+
+
+## Examples
+```bash
+pacprotocol-cli settxfee 0.00001
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "settxfee", "params": [0.00001] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+true|false        #(boolean) Returns true if successful
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help settxfee
+```
+Will produce following output:
+
+
+```bash
+settxfee amount
+
+Set the transaction fee per kB. Overwrites the paytxfee parameter.
+
+Arguments:
+1. amount         (numeric or string, required) The transaction fee in PAC/kB
+
+Result:
+true|false        (boolean) Returns true if successful
+
+Examples:
+> pacprotocol-cli settxfee 0.00001
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "settxfee", "params": [0.00001] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

@@ -1,0 +1,143 @@
+---
+sidebar_position: 11
+---
+
+# createrawtransaction
+## Command
+
+```bash
+pacprotocol-cli createrawtransaction [{"txid":"id","vout":n},...] [{"address":amount},{"data":"hex"},...] ( locktime )
+```
+
+Create a transaction spending the given inputs and creating new outputs.
+Outputs can be addresses or data.
+Returns hex-encoded raw transaction.
+Note that the transaction's inputs are not signed, and
+it is not stored in the wallet or transmitted to the network.
+
+
+
+## Arguments
+
+### `inputs` <span class='asterisk'>*</span>
+*(array, required)*
+
+A json array of json objects
+     
+
+
+```json
+[
+     {
+       "txid":"id",    (string, required) The transaction id
+       "vout":n,       (numeric, required) The output number
+       "sequence":n    (numeric, optional) The sequence number
+} 
+     ,...
+]
+```
+
+
+
+### `outputs` <span class='asterisk'>*</span>
+*(array, required)*
+
+a json array with outputs (key-value pairs)
+   
+
+
+```json
+[
+    {
+    "address": x.xxx,    (obj, optional) A key-value pair. The key (string) is the PAC address, the value (float or string) is the amount in PAC
+},
+    {
+    "data": "hex"      (obj, optional) A key-value pair. The key must be "data", the value is hex encoded data
+}
+    ,...               More key-value pairs of the above form. For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also
+                     accepted as second parameter.
+]
+```
+
+
+
+### `locktime` 
+*(numeric, optional, default=0)*
+
+Raw locktime. Non-0 value also locktime-activates inputs
+
+
+## Examples
+```bash
+pacprotocol-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"address\":0.01}]"
+```
+
+```bash
+pacprotocol-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"data\":\"00010203\"}]"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"address\":0.01}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"data\":\"00010203\"}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"transaction"              #(string) hex string of the transaction
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help createrawtransaction
+```
+Will produce following output:
+
+
+```bash
+createrawtransaction [{"txid":"id","vout":n},...] [{"address":amount},{"data":"hex"},...] ( locktime )
+
+Create a transaction spending the given inputs and creating new outputs.
+Outputs can be addresses or data.
+Returns hex-encoded raw transaction.
+Note that the transaction's inputs are not signed, and
+it is not stored in the wallet or transmitted to the network.
+
+Arguments:
+1. "inputs"                (array, required) A json array of json objects
+     [
+       {
+         "txid":"id",      (string, required) The transaction id
+         "vout":n,         (numeric, required) The output number
+         "sequence":n      (numeric, optional) The sequence number
+       } 
+       ,...
+     ]
+2. "outputs"               (array, required) a json array with outputs (key-value pairs)
+   [
+    {
+      "address": x.xxx,    (obj, optional) A key-value pair. The key (string) is the PAC address, the value (float or string) is the amount in PAC
+    },
+    {
+      "data": "hex"        (obj, optional) A key-value pair. The key must be "data", the value is hex encoded data
+    }
+    ,...                     More key-value pairs of the above form. For compatibility reasons, a dictionary, which holds the key-value pairs directly, is also
+                             accepted as second parameter.
+   ]
+3. locktime                  (numeric, optional, default=0) Raw locktime. Non-0 value also locktime-activates inputs
+
+Result:
+"transaction"              (string) hex string of the transaction
+
+Examples:
+> pacprotocol-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"address\":0.01}]"
+> pacprotocol-cli createrawtransaction "[{\"txid\":\"myid\",\"vout\":0}]" "[{\"data\":\"00010203\"}]"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"address\":0.01}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createrawtransaction", "params": ["[{\"txid\":\"myid\",\"vout\":0}]", "[{\"data\":\"00010203\"}]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

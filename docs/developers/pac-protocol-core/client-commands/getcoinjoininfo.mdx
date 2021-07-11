@@ -1,0 +1,119 @@
+---
+sidebar_position: 50
+---
+
+# getcoinjoininfo
+## Command
+
+```bash
+pacprotocol-cli getcoinjoininfo
+```
+
+getcoinjoininfo
+Returns an object containing an information about CoinJoin settings and state.
+
+
+
+## Examples
+```bash
+pacprotocol-cli getcoinjoininfo 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getcoinjoininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+## Result
+```bash
+Result #(for regular nodes):
+{
+  "enabled": true|false,             #(bool) Whether mixing functionality is enabled
+  "multisession": true|false,        #(bool) Whether CoinJoin Multisession option is enabled
+  "max_sessions": xxx,               #(numeric) How many parallel mixing sessions can there be at once
+  "max_rounds": xxx,                 #(numeric) How many rounds to mix
+  "max_amount": xxx,                 #(numeric) Target CoinJoin balance in PAC
+  "denoms_goal": xxx,                #(numeric) How many inputs of each denominated amount to target
+  "denoms_hardcap": xxx,             #(numeric) Maximum limit of how many inputs of each denominated amount to create
+  "queue_size": xxx,                 #(numeric) How many queues there are currently on the network
+  "running": true|false,             #(bool) Whether mixing is currently running
+  "sessions":                        #(array of json objects)
+    [
+      {
+      "protxhash": "...",            #(string) The ProTxHash of the masternode
+      "outpoint": "txid-index",      #(string) The outpoint of the masternode
+      "service": "host:port",        #(string) The IP address and port of the masternode
+      "denomination": xxx,           #(numeric) The denomination of the mixing session in PAC
+      "state": "...",                #(string) Current state of the mixing session
+      "entries_count": xxx,          #(numeric) The number of entries in the mixing session
+      }
+      ,...
+    ],
+  "keys_left": xxx,                  #(numeric) How many new keys are left since last automatic backup
+  "warnings": "..."                  #(string) Warnings if any
+}
+
+Result #(for masternodes):
+{
+  "queue_size": xxx,                 #(numeric) How many queues there are currently on the network
+  "denomination": xxx,               #(numeric) The denomination of the mixing session in PAC
+  "state": "...",                    #(string) Current state of the mixing session
+  "entries_count": xxx,              #(numeric) The number of entries in the mixing session
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getcoinjoininfo
+```
+Will produce following output:
+
+
+```bash
+getcoinjoininfo
+Returns an object containing an information about CoinJoin settings and state.
+
+Result (for regular nodes):
+{
+  "enabled": true|false,             (bool) Whether mixing functionality is enabled
+  "multisession": true|false,        (bool) Whether CoinJoin Multisession option is enabled
+  "max_sessions": xxx,               (numeric) How many parallel mixing sessions can there be at once
+  "max_rounds": xxx,                 (numeric) How many rounds to mix
+  "max_amount": xxx,                 (numeric) Target CoinJoin balance in PAC
+  "denoms_goal": xxx,                (numeric) How many inputs of each denominated amount to target
+  "denoms_hardcap": xxx,             (numeric) Maximum limit of how many inputs of each denominated amount to create
+  "queue_size": xxx,                 (numeric) How many queues there are currently on the network
+  "running": true|false,             (bool) Whether mixing is currently running
+  "sessions":                        (array of json objects)
+    [
+      {
+      "protxhash": "...",            (string) The ProTxHash of the masternode
+      "outpoint": "txid-index",      (string) The outpoint of the masternode
+      "service": "host:port",        (string) The IP address and port of the masternode
+      "denomination": xxx,           (numeric) The denomination of the mixing session in PAC
+      "state": "...",                (string) Current state of the mixing session
+      "entries_count": xxx,          (numeric) The number of entries in the mixing session
+      }
+      ,...
+    ],
+  "keys_left": xxx,                  (numeric) How many new keys are left since last automatic backup
+  "warnings": "..."                  (string) Warnings if any
+}
+
+Result (for masternodes):
+{
+  "queue_size": xxx,                 (numeric) How many queues there are currently on the network
+  "denomination": xxx,               (numeric) The denomination of the mixing session in PAC
+  "state": "...",                    (string) Current state of the mixing session
+  "entries_count": xxx,              (numeric) The number of entries in the mixing session
+}
+
+Examples:
+> pacprotocol-cli getcoinjoininfo 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getcoinjoininfo", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

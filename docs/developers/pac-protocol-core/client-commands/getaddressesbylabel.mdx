@@ -1,0 +1,71 @@
+---
+sidebar_position: 31
+---
+
+# getaddressesbylabel
+## Command
+
+```bash
+pacprotocol-cli getaddressesbylabel "label"
+```
+
+Returns the list of addresses assigned the specified label.
+
+
+
+## Arguments
+
+### `label` <span class='asterisk'>*</span>
+*(string, required)*
+
+The label.
+
+
+## Examples
+```bash
+pacprotocol-cli getaddressesbylabel "tabby"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressesbylabel", "params": ["tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```json
+{ #(json object with addresses as keys)
+  "address": { #(json object with information about address)
+    "purpose": "string" #(string)  Purpose of address #("send" for sending address, "receive" for receiving address)
+  },...
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getaddressesbylabel
+```
+Will produce following output:
+
+
+```bash
+getaddressesbylabel "label"
+
+Returns the list of addresses assigned the specified label.
+
+Arguments:
+1. "label"  (string, required) The label.
+
+Result:
+{ (json object with addresses as keys)
+  "address": { (json object with information about address)
+    "purpose": "string" (string)  Purpose of address ("send" for sending address, "receive" for receiving address)
+  },...
+}
+
+Examples:
+> pacprotocol-cli getaddressesbylabel "tabby"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getaddressesbylabel", "params": ["tabby"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

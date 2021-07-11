@@ -1,0 +1,133 @@
+---
+sidebar_position: 101
+---
+
+# listreceivedbyaddress
+## Command
+
+```bash
+pacprotocol-cli listreceivedbyaddress ( minconf addlocked include_empty include_watchonly address_filter )
+```
+
+List incoming payments grouped by receiving address.
+
+
+
+## Arguments
+
+### `minconf` 
+*(numeric, optional, default=1)*
+
+The minimum number of confirmations before payments are included.
+
+
+### `addlocked` 
+*(bool, optional, default=false)*
+
+Whether to include transactions locked via InstantSend.
+
+
+### `include_empty` 
+*(bool, optional, default=false)*
+
+Whether to include addresses that haven't received any payments.
+
+
+### `include_watchonly` 
+*( bool, optional, default=false)*
+
+Whether to include watch-only addresses (see 'importaddress').
+
+
+### `address_filter` 
+*(string, optional)*
+
+If present, only return information on this address.
+
+
+## Examples
+```bash
+pacprotocol-cli listreceivedbyaddress 
+```
+
+```bash
+pacprotocol-cli listreceivedbyaddress 6 false true
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, false, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, false, true, true, "XbtdLrTsrPDhGy1wXtwKYoBpuKovE3JeBK"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+[
+  {
+    "involvesWatchonly" : true,        #(bool) Only returned if imported addresses were involved in transaction
+    "address" : "receivingaddress",    #(string) The receiving address
+    "account" : "accountname",         #(string) Backwards compatible alias for label.
+    "amount" : x.xxx,                  #(numeric) The total amount in PAC received by the address
+    "confirmations" : n                #(numeric) The number of confirmations of the most recent transaction included.
+                                                 If 'addlocked' is true, the number of confirmations can be less than
+                                                 configured for transactions locked via InstantSend
+    "label" : "label",               #(string) The label of the receiving address. The default label is "".
+    "txids": [
+       "txid",                         #(string) The ids of transactions received with the address 
+       ...
+    ]
+  }
+  ,...
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help listreceivedbyaddress
+```
+Will produce following output:
+
+
+```bash
+listreceivedbyaddress ( minconf addlocked include_empty include_watchonly address_filter )
+
+List incoming payments grouped by receiving address.
+
+Arguments:
+1. minconf           (numeric, optional, default=1) The minimum number of confirmations before payments are included.
+2. addlocked         (bool, optional, default=false) Whether to include transactions locked via InstantSend.
+3. include_empty     (bool, optional, default=false) Whether to include addresses that haven't received any payments.
+4. include_watchonly (bool, optional, default=false) Whether to include watch-only addresses (see 'importaddress').
+5. address_filter    (string, optional) If present, only return information on this address.
+
+Result:
+[
+  {
+    "involvesWatchonly" : true,        (bool) Only returned if imported addresses were involved in transaction
+    "address" : "receivingaddress",    (string) The receiving address
+    "account" : "accountname",         (string) Backwards compatible alias for label.
+    "amount" : x.xxx,                  (numeric) The total amount in PAC received by the address
+    "confirmations" : n                (numeric) The number of confirmations of the most recent transaction included.
+                                                 If 'addlocked' is true, the number of confirmations can be less than
+                                                 configured for transactions locked via InstantSend
+    "label" : "label",               (string) The label of the receiving address. The default label is "".
+    "txids": [
+       "txid",                         (string) The ids of transactions received with the address 
+       ...
+    ]
+  }
+  ,...
+]
+
+Examples:
+> pacprotocol-cli listreceivedbyaddress 
+> pacprotocol-cli listreceivedbyaddress 6 false true
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, false, true, true] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listreceivedbyaddress", "params": [6, false, true, true, "XbtdLrTsrPDhGy1wXtwKYoBpuKovE3JeBK"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

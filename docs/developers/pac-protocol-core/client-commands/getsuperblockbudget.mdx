@@ -1,0 +1,63 @@
+---
+sidebar_position: 75
+---
+
+# getsuperblockbudget
+## Command
+
+```bash
+pacprotocol-cli getsuperblockbudget index
+```
+
+Returns the absolute maximum sum of superblock payments allowed.
+
+
+
+## Arguments
+
+### `index` <span class='asterisk'>*</span>
+*(numeric, required)*
+
+The block index
+
+
+## Examples
+```bash
+pacprotocol-cli getsuperblockbudget 1000
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getsuperblockbudget", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+n                #(numeric) The absolute maximum sum of superblock payments allowed, in PAC
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getsuperblockbudget
+```
+Will produce following output:
+
+
+```bash
+getsuperblockbudget index
+
+Returns the absolute maximum sum of superblock payments allowed.
+
+Arguments:
+1. index         (numeric, required) The block index
+
+Result:
+n                (numeric) The absolute maximum sum of superblock payments allowed, in PAC
+
+Examples:
+> pacprotocol-cli getsuperblockbudget 1000
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getsuperblockbudget", "params": [1000] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

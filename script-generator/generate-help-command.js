@@ -23,7 +23,7 @@ axios.post("http://lol:lol@localhost:1111",
     //Not included in help, hence manually adding this
     commands.push("setstaking");
 
-    const doc_path = path.resolve(__dirname, "../docs/core/developers/pac-protocol-core/client-commands/");
+    const doc_path = path.resolve(__dirname, "../docs/developers/pac-protocol-core/client-commands/");
 
     const files = await fs.readdir(doc_path + "/");
 
@@ -32,6 +32,8 @@ axios.post("http://lol:lol@localhost:1111",
             await fs.unlink(doc_path + "/" + file);
         }
     })
+
+    const command_lists = [];
 
     for (let i = 0; i < commands.length; i++) {
         const command = commands[i];
@@ -250,17 +252,6 @@ axios.post("http://lol:lol@localhost:1111",
                 examples = examples.join("\n\n");
             }
 
-            //console.log("Method", command_name);
-            //console.log("Description", description);
-            //console.log("Note", note);
-            //console.log("Arguments", parameter);
-            //console.log("Examples", examples);
-
-      
-
-            mdx_result += "---\n";
-            mdx_result += "sidebar_position: " + (i + 1) + "\n";
-            mdx_result += "---\n";
             mdx_result += "\n"
             mdx_result += "# " + command_name + "\n"
 
@@ -327,6 +318,28 @@ axios.post("http://lol:lol@localhost:1111",
         mdx_result += "\n```bash\n" + res.data.result + "\n```\n";
         mdx_result += "\n";
 
-        await fs.writeFile(doc_path + "/" + command_name + ".mdx", mdx_result, "utf8");
+        command_lists.push({
+            command_name,
+            mdx_result
+        });
+    }
+
+    command_lists.sort((a, b) => {
+        if (a.command_name < b.command_name) return -1;
+        if (a.command_name > b.command_name) return 1;
+        return 0;
+    });
+
+    for (let i = 0; i < command_lists.length; i++) {
+        let mdx_result = "";
+        mdx_result += "---\n";
+        mdx_result += "sidebar_position: " + (i + 1) + "\n";
+        mdx_result += "---\n";
+        mdx_result += command_lists[i].mdx_result
+            .replace(/Dash/gm, "PAC Protocol")
+            .replace(/DASH/gm, "PAC Protocol")
+            .replace(/dash/gm, "pacprotocol")
+
+        await fs.writeFile(doc_path + "/" + command_lists[i].command_name + ".mdx", mdx_result, "utf8");
     }
 })

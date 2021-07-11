@@ -1,0 +1,54 @@
+---
+sidebar_position: 37
+---
+
+# getbestblockhash
+## Command
+
+```bash
+pacprotocol-cli getbestblockhash
+```
+
+Returns the hash of the best (tip) block in the longest blockchain.
+
+
+
+## Examples
+```bash
+pacprotocol-cli getbestblockhash 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+## Result
+```bash
+"hex"      #(string) the block hash hex encoded
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getbestblockhash
+```
+Will produce following output:
+
+
+```bash
+getbestblockhash
+
+Returns the hash of the best (tip) block in the longest blockchain.
+
+Result:
+"hex"      (string) the block hash hex encoded
+
+Examples:
+> pacprotocol-cli getbestblockhash 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestblockhash", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

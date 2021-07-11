@@ -1,0 +1,54 @@
+---
+sidebar_position: 109
+---
+
+# masternode
+## Command
+
+```bash
+pacprotocol-cli masternode "command" ...
+```
+
+masternode "command" ...
+Set of commands to execute masternode related actions
+
+
+
+## Arguments
+
+### `command` <span class='asterisk'>*</span>
+*(string or set of strings, required)*
+
+The command to execute
+
+
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help masternode
+```
+Will produce following output:
+
+
+```bash
+masternode "command" ...
+Set of commands to execute masternode related actions
+
+Arguments:
+1. "command"        (string or set of strings, required) The command to execute
+
+Available commands:
+  count        - Get information about number of masternodes
+  current      - DEPRECATED Print info on current masternode winner to be paid the next block (calculated locally)
+  outputs      - Print masternode compatible outputs
+  status       - Print masternode status information
+  list         - Print list of all known masternodes (see masternodelist for more info)
+  payments     - Return information about masternode payments in a mined block
+  winner       - DEPRECATED Print info on next masternode winner to vote for
+  winners      - Print list of masternode winners
+
+```
+

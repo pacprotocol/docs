@@ -1,0 +1,88 @@
+---
+sidebar_position: 142
+---
+
+# upgradetohd
+## Command
+
+```bash
+pacprotocol-cli upgradetohd ( "mnemonic" "mnemonicpassphrase" "walletpassphrase" )
+```
+
+Upgrades non-HD wallets to HD.
+
+Warning: You will need to make a new backup of your wallet after setting the HD wallet mnemonic.
+
+
+
+## Arguments
+
+### `mnemonic` 
+*(string, optional, default="")*
+
+Mnemonic as defined in BIP39 to use for the new HD wallet.
+                          Use an empty string "" to generate a new random mnemonic.
+
+
+### `mnemonicpassphrase` 
+*(string, optional, default="")*
+
+Optional mnemonic passphrase as defined in BIP39
+
+
+### `walletpassphrase` 
+*(string, optional)*
+
+If your wallet is encrypted you must have your wallet passphrase here.
+                          If your wallet is not encrypted specifying wallet passphrase will trigger wallet encryption.
+
+
+## Examples
+```bash
+pacprotocol-cli upgradetohd 
+```
+
+```bash
+pacprotocol-cli upgradetohd "mnemonicword1 ... mnemonicwordN"
+```
+
+```bash
+pacprotocol-cli upgradetohd "mnemonicword1 ... mnemonicwordN" "mnemonicpassphrase"
+```
+
+```bash
+pacprotocol-cli upgradetohd "mnemonicword1 ... mnemonicwordN" "mnemonicpassphrase" "walletpassphrase"
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help upgradetohd
+```
+Will produce following output:
+
+
+```bash
+upgradetohd ( "mnemonic" "mnemonicpassphrase" "walletpassphrase" )
+
+Upgrades non-HD wallets to HD.
+
+Warning: You will need to make a new backup of your wallet after setting the HD wallet mnemonic.
+
+Arguments:
+1. "mnemonic"             (string, optional, default="") Mnemonic as defined in BIP39 to use for the new HD wallet.
+                          Use an empty string "" to generate a new random mnemonic.
+2. "mnemonicpassphrase"   (string, optional, default="") Optional mnemonic passphrase as defined in BIP39
+3. "walletpassphrase"     (string, optional) If your wallet is encrypted you must have your wallet passphrase here.
+                          If your wallet is not encrypted specifying wallet passphrase will trigger wallet encryption.
+
+Examples:
+> pacprotocol-cli upgradetohd 
+> pacprotocol-cli upgradetohd "mnemonicword1 ... mnemonicwordN"
+> pacprotocol-cli upgradetohd "mnemonicword1 ... mnemonicwordN" "mnemonicpassphrase"
+> pacprotocol-cli upgradetohd "mnemonicword1 ... mnemonicwordN" "mnemonicpassphrase" "walletpassphrase"
+
+```
+

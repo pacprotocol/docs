@@ -14,12 +14,28 @@
   --ifm-color-primary-light: #00E0FC;
   --ifm-color-primary-lighter: #6eecfd;
   --ifm-color-primary-lightest: #adf5ff;
+
   --ifm-code-font-size: 95%;
+  --ifm-color-text-dark: #272A2B;
+  --ifm-color-black: #272A2B;
+
+  --ifm-navbar-padding-vertical: 15px;
+  --ifm-navbar-height: 80px;
+
+  --ifm-pre-background: #272A2B;
 
   --pac-logo: url("/img/logo/PACProtocolPrimaryLogo.svg");
 }
 
 [data-theme="dark"] {
+  --ifm-color-primary: #00E0FC;
+  --ifm-color-primary-dark: #009eb3;
+  --ifm-color-primary-darker: #008697;
+  --ifm-color-primary-darkest: #006c7a;
+  --ifm-color-primary-light: #00E0FC;
+  --ifm-color-primary-lighter: #6eecfd;
+  --ifm-color-primary-lightest: #adf5ff;
+  
   --pac-logo: url("/img/logo/PACProtocolPrimaryLogoWhite.svg");
 }
 
@@ -39,11 +55,20 @@
   background-position: center;
 }
 
-.navbar {
-  --ifm-navbar-padding-vertical: 15px;
+.navbar__title {
+  padding-left: 2rem;
+}
+
+.table-of-contents {
+  font-size: 1em;
+}
+
+.navbar__items {
+  height: 100%;
 }
 
 .navbar__brand {
+  height: 100%;
 }
 
 
@@ -68,4 +93,12 @@
 
 .asterisk {
   color: var(--ifm-color-primary);
+}
+
+.footer--dark{
+  --ifm-footer-background-color: #272A2B;
+}
+
+pre {
+  background-color: var(--ifm-pre-background) !important;
 }

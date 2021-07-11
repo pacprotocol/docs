@@ -1,0 +1,103 @@
+---
+sidebar_position: 98
+---
+
+# listlabels
+## Command
+
+```bash
+pacprotocol-cli listlabels ( "purpose" )
+```
+
+Returns the list of all labels, or labels that are assigned to addresses with a specific purpose.
+
+
+
+## Arguments
+
+### `purpose` 
+*(string, optional)*
+
+Address purpose to list labels for ('send','receive'). An empty string is the same as not providing this argument.
+
+
+## Examples
+
+
+List all labels
+
+```bash
+pacprotocol-cli listlabels 
+```
+
+
+
+List labels that have receiving addresses
+
+```bash
+pacprotocol-cli listlabels receive
+```
+
+
+
+List labels that have sending addresses
+
+```bash
+pacprotocol-cli listlabels send
+```
+
+
+
+As json rpc call
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listlabels", "params": [receive] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+[               #(json array of string)
+  "label",      #(string) Label name
+  ...
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help listlabels
+```
+Will produce following output:
+
+
+```bash
+listlabels ( "purpose" )
+
+Returns the list of all labels, or labels that are assigned to addresses with a specific purpose.
+
+Arguments:
+1. "purpose"    (string, optional) Address purpose to list labels for ('send','receive'). An empty string is the same as not providing this argument.
+
+Result:
+[               (json array of string)
+  "label",      (string) Label name
+  ...
+]
+
+Examples:
+
+List all labels
+> pacprotocol-cli listlabels 
+
+List labels that have receiving addresses
+> pacprotocol-cli listlabels receive
+
+List labels that have sending addresses
+> pacprotocol-cli listlabels send
+
+As json rpc call
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "listlabels", "params": [receive] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

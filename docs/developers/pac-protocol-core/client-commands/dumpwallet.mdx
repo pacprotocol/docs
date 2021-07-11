@@ -1,0 +1,77 @@
+---
+sidebar_position: 19
+---
+
+# dumpwallet
+## Command
+
+```bash
+pacprotocol-cli dumpwallet "filename"
+```
+
+Dumps all wallet keys in a human-readable format to a server-side file. This does not allow overwriting existing files.
+Imported scripts are included in the dumpfile too, their corresponding addresses will be added automatically by importwallet.
+Note that if your wallet contains keys which are not derived from your HD seed (e.g. imported keys), these are not covered by
+only backing up the seed itself, and must be backed up too (e.g. ensure you back up the whole dumpfile).
+
+
+
+## Arguments
+
+### `filename` <span class='asterisk'>*</span>
+*(string, required)*
+
+The filename with path (either absolute or relative to pacprotocold)
+
+
+## Examples
+```bash
+pacprotocol-cli dumpwallet "test"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```json
+{                           #(json object)
+  "keys" : {            #(int) The number of keys contained in the wallet dump
+  "filename" : {        #(string) The filename with full absolute path
+  "warning" : {         #(string) A warning about not sharing the wallet dump with anyone
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help dumpwallet
+```
+Will produce following output:
+
+
+```bash
+dumpwallet "filename"
+
+Dumps all wallet keys in a human-readable format to a server-side file. This does not allow overwriting existing files.
+Imported scripts are included in the dumpfile too, their corresponding addresses will be added automatically by importwallet.
+Note that if your wallet contains keys which are not derived from your HD seed (e.g. imported keys), these are not covered by
+only backing up the seed itself, and must be backed up too (e.g. ensure you back up the whole dumpfile).
+
+Arguments:
+1. "filename"    (string, required) The filename with path (either absolute or relative to pacprotocold)
+
+Result:
+{                           (json object)
+  "keys" : {            (int) The number of keys contained in the wallet dump
+  "filename" : {        (string) The filename with full absolute path
+  "warning" : {         (string) A warning about not sharing the wallet dump with anyone
+}
+
+Examples:
+> pacprotocol-cli dumpwallet "test"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "dumpwallet", "params": ["test"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

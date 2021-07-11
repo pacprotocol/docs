@@ -1,0 +1,104 @@
+---
+sidebar_position: 133
+---
+
+# signmessage
+## Command
+
+```bash
+pacprotocol-cli signmessage "address" "message"
+```
+
+Sign a message with the private key of an address
+
+
+
+## Arguments
+
+### `address` <span class='asterisk'>*</span>
+*(string, required)*
+
+The PAC address to use for the private key.
+
+
+### `message` <span class='asterisk'>*</span>
+*(string, required)*
+
+The message to create a signature of.
+
+
+## Examples
+
+
+Unlock the wallet for 30 seconds
+
+```bash
+pacprotocol-cli walletpassphrase "mypassphrase" 30
+```
+
+
+
+Create the signature
+
+```bash
+pacprotocol-cli signmessage "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" "my message"
+```
+
+
+
+Verify the signature
+
+```bash
+pacprotocol-cli verifymessage "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" "signature" "my message"
+```
+
+
+
+As json rpc
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessage", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"signature"          #(string) The signature of the message encoded in base 64
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help signmessage
+```
+Will produce following output:
+
+
+```bash
+signmessage "address" "message"
+
+Sign a message with the private key of an address
+
+Arguments:
+1. "address"         (string, required) The PAC address to use for the private key.
+2. "message"         (string, required) The message to create a signature of.
+
+Result:
+"signature"          (string) The signature of the message encoded in base 64
+
+Examples:
+
+Unlock the wallet for 30 seconds
+> pacprotocol-cli walletpassphrase "mypassphrase" 30
+
+Create the signature
+> pacprotocol-cli signmessage "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" "my message"
+
+Verify the signature
+> pacprotocol-cli verifymessage "XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG" "signature" "my message"
+
+As json rpc
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "signmessage", "params": ["XwnLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPwG", "my message"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

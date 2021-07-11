@@ -1,0 +1,67 @@
+---
+sidebar_position: 64
+---
+
+# getnewaddress
+## Command
+
+```bash
+pacprotocol-cli getnewaddress ( "label" )
+```
+
+Returns a new PAC address for receiving payments.
+If 'label' is specified, it is added to the address book 
+so payments received with the address will be associated with 'label'.
+
+
+
+## Arguments
+
+### `label` 
+*(string, optional)*
+
+The label name for the address to be linked to. If not provided, the default label "" is used. It can also be set to the empty string "" to represent the default label. The label does not need to exist, it will be created if there is no label by the given name.
+
+
+## Examples
+```bash
+pacprotocol-cli getnewaddress 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+"address"    #(string) The new PAC address
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getnewaddress
+```
+Will produce following output:
+
+
+```bash
+getnewaddress ( "label" )
+
+Returns a new PAC address for receiving payments.
+If 'label' is specified, it is added to the address book 
+so payments received with the address will be associated with 'label'.
+
+Arguments:
+1. "label"        (string, optional) The label name for the address to be linked to. If not provided, the default label "" is used. It can also be set to the empty string "" to represent the default label. The label does not need to exist, it will be created if there is no label by the given name.
+
+Result:
+"address"    (string) The new PAC address
+
+Examples:
+> pacprotocol-cli getnewaddress 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getnewaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

@@ -1,0 +1,66 @@
+---
+sidebar_position: 147
+---
+
+# verifyislock
+## Command
+
+```bash
+pacprotocol-cli verifyislock "id" "txid" "signature" ( maxHeight )
+```
+
+verifyislock "id" "txid" "signature" ( maxHeight )
+Test if a quorum signature is valid for an InstantSend Lock
+
+
+
+## Arguments
+
+### `id` <span class='asterisk'>*</span>
+*(string, required)*
+
+Request id.
+
+
+### `txid` <span class='asterisk'>*</span>
+*(string, required)*
+
+The transaction id.
+
+
+### `signature` <span class='asterisk'>*</span>
+*(string, required)*
+
+The InstantSend Lock signature to verify.
+
+
+### `maxHeight` 
+*(int, optional)*
+
+The maximum height to search quorums from.
+
+
+
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help verifyislock
+```
+Will produce following output:
+
+
+```bash
+verifyislock "id" "txid" "signature" ( maxHeight )
+Test if a quorum signature is valid for an InstantSend Lock
+
+Arguments:
+1. "id"                  (string, required) Request id.
+2. "txid"                (string, required) The transaction id.
+3. "signature"           (string, required) The InstantSend Lock signature to verify.
+4. maxHeight                 (int, optional) The maximum height to search quorums from.
+
+```
+

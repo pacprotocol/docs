@@ -1,0 +1,62 @@
+---
+sidebar_position: 38
+---
+
+# getbestchainlock
+## Command
+
+```bash
+pacprotocol-cli getbestchainlock
+```
+
+Returns information about the best chainlock. Throws an error if there is no known chainlock yet.
+
+
+## Examples
+```bash
+pacprotocol-cli getbestchainlock 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestchainlock", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+## Result
+```json
+{
+  "blockhash" : "hash",      #(string) The block hash hex encoded
+  "height" : n,              #(numeric) The block height or index
+  "signature" : "hash",    #(string) The chainlock's BLS signature.
+  "known_block" : true|false #(boolean) True if the block is known by our node
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getbestchainlock
+```
+Will produce following output:
+
+
+```bash
+getbestchainlock
+
+Returns information about the best chainlock. Throws an error if there is no known chainlock yet.
+Result:
+{
+  "blockhash" : "hash",      (string) The block hash hex encoded
+  "height" : n,              (numeric) The block height or index
+  "signature" : "hash",    (string) The chainlock's BLS signature.
+  "known_block" : true|false (boolean) True if the block is known by our node
+}
+
+Examples:
+> pacprotocol-cli getbestchainlock 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getbestchainlock", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

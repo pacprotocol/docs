@@ -1,0 +1,69 @@
+---
+sidebar_position: 12
+---
+
+# createwallet
+## Command
+
+```bash
+pacprotocol-cli createwallet "wallet_name"
+```
+
+Creates and loads a new wallet.
+
+
+
+## Arguments
+
+### `wallet_name` <span class='asterisk'>*</span>
+*(string, required)*
+
+The name for the new wallet. If this is a path, the wallet will be created at the path location.
+
+
+## Examples
+```bash
+pacprotocol-cli createwallet "testwallet"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createwallet", "params": ["testwallet"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```json
+{
+  "name" :    &lt;wallet_name&gt;,        #(string) The wallet name if created successfully. If the wallet was created using a full path, the wallet_name will be the full path.
+  "warning" : &lt;warning&gt;,            #(string) Warning message if wallet was not loaded cleanly.
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help createwallet
+```
+Will produce following output:
+
+
+```bash
+createwallet "wallet_name"
+
+Creates and loads a new wallet.
+
+Arguments:
+1. "wallet_name"    (string, required) The name for the new wallet. If this is a path, the wallet will be created at the path location.
+
+Result:
+{
+  "name" :    <wallet_name>,        (string) The wallet name if created successfully. If the wallet was created using a full path, the wallet_name will be the full path.
+  "warning" : <warning>,            (string) Warning message if wallet was not loaded cleanly.
+}
+
+Examples:
+> pacprotocol-cli createwallet "testwallet"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "createwallet", "params": ["testwallet"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

@@ -1,0 +1,60 @@
+---
+sidebar_position: 2
+---
+
+# Install Bootstrap
+
+Downloading & Installing Bootstrap can help you to sync it faster. It can also help in situation if the blockchain is not syncing on your machine.
+
+This is **optional** and not mandatory.
+
+At first stop your daemon instance by
+
+```bash
+systemctl stop pac.service
+```
+
+If you skipped the [Step 3 from Getting Started](/docs/core/developers/pac-protocol-core/getting-started#step-3---creating-systemctl-service-optional-recommended), you can run daemon by following step:
+
+```bash
+./root/PACProtocol/pacprotocol-cli stop # Only when skipped Step 3
+```
+
+Remove some content in `.PACProtocol`, download Bootstrap and move content of Bootstrap to `.PACProtocol`
+
+```bash
+# Download Bootstrap & Unpack it
+wget --progress=dot -e dot_bytes=100M -e dots_in_line=1 https://utils.pacglobal.io/Bootstrap.tar.gz -O /root/Bootstrap.tar.gz
+tar -xzf /root/Bootstrap.tar.gz -C /root/Bootstrap
+
+# Remove blockchain files + Bootstrap.tar.gz
+rm -rf /root/.PACProtocol/evodb /root/.PACProtocol/chainstate /root/.PACProtocol/blocks /root/.PACProtocol/peers.dat /root/Boostrap.tar.gz
+
+# Move Bootstrap files to .PACProtocol
+mv /root/Bootstrap/evodb /root/.PACProtocol/evodb
+mv /root/Bootstrap/chainstate /root/.PACProtocol/chainstate
+mv /root/Bootstrap/blocks /root/.PACProtocol/blocks
+mv /root/Bootstrap/peers.dat /root/.PACProtocol/peers.dat
+```
+
+Then you can safetly turn PAC Protocol Daemon on again:
+
+```
+systemctl start pac.service
+```
+
+Or if skipped [Step 3 from Getting Started](/docs/core/developers/pac-protocol-core/getting-started#step-3---creating-systemctl-service-optional-recommended):
+
+```bash
+./root/PACProtocol/pacprotocold -daemon # Only when skipped Step 3
+```
+
+In this case, it will sync much quicklier. It should be done in few minutes.
+
+You can validate if the blockchain is fully synced:
+
+```bash
+curl --data-binary '{"jsonrpc":"1.0","id":"curltext","method":"mnsync","params":["status"]}' -H 'content-type:text/plain;' http://<rpcusername>:<rpcpassword>@127.0.0.1:7111/
+```
+
+If `"isBlockchainSynced"` is `true`, it means the blockchain on your machine is fully synced!

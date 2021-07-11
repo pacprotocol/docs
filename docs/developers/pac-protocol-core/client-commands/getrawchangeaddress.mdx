@@ -1,0 +1,56 @@
+---
+sidebar_position: 67
+---
+
+# getrawchangeaddress
+## Command
+
+```bash
+pacprotocol-cli getrawchangeaddress
+```
+
+Returns a new PAC address, for receiving change.
+This is for use with raw transactions, NOT normal use.
+
+
+
+## Examples
+```bash
+pacprotocol-cli getrawchangeaddress 
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawchangeaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+## Result
+```bash
+"address"    #(string) The address
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getrawchangeaddress
+```
+Will produce following output:
+
+
+```bash
+getrawchangeaddress
+
+Returns a new PAC address, for receiving change.
+This is for use with raw transactions, NOT normal use.
+
+Result:
+"address"    (string) The address
+
+Examples:
+> pacprotocol-cli getrawchangeaddress 
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getrawchangeaddress", "params": [] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

@@ -1,0 +1,56 @@
+---
+sidebar_position: 128
+---
+
+# setcoinjoinamount
+## Command
+
+```bash
+pacprotocol-cli setcoinjoinamount amount
+```
+
+Set the goal amount in PAC for CoinJoin.
+
+
+
+## Arguments
+
+### `amount` <span class='asterisk'>*</span>
+*(numeric, required)*
+
+The default amount is 1000 Cannot be more than 2147483647 nor less than 2
+
+
+
+## Examples
+```bash
+pacprotocol-cli setcoinjoinamount 500
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setcoinjoinamount", "params": [208] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help setcoinjoinamount
+```
+Will produce following output:
+
+
+```bash
+setcoinjoinamount amount
+
+Set the goal amount in PAC for CoinJoin.
+
+Arguments:
+1. amount         (numeric, required) The default amount is 1000 Cannot be more than 2147483647 nor less than 2
+Examples:
+> pacprotocol-cli setcoinjoinamount 500
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "setcoinjoinamount", "params": [208] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

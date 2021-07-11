@@ -1,0 +1,124 @@
+---
+sidebar_position: 108
+---
+
+# logging
+## Command
+
+```bash
+pacprotocol-cli logging ( <include> <exclude> )
+```
+
+logging ( &lt;include&gt; &lt;exclude&gt; )
+Gets and sets the logging configuration.
+When called without an argument, returns the list of categories with status that are currently being debug logged or not.
+When called with arguments, adds or removes categories from debug logging and return the lists above.
+The arguments are evaluated in order "include", "exclude".
+If an item is both included and excluded, it will thus end up being excluded.
+The valid logging categories are: net, tor, mempool, http, bench, zmq, db, rpc, estimatefee, addrman, selectcoins, reindex, cmpctblock, rand, prune, proxy, mempoolrej, libevent, coindb, qt, leveldb, chainlocks, gobject, instantsend, keepass, llmq, llmq-dkg, llmq-sigs, mnpayments, mnsync, coinjoin, spork, netconn
+In addition, the following are available as category names with special meanings:
+  - "all",  "1" : represent all logging categories.
+  - "pacprotocol" activates all PAC Protocol-specific categories at once.
+To deactivate all categories at once you can specify "all" in &lt;exclude&gt;.
+  - "none", "0" : even if other logging categories are specified, ignore all of them.
+
+
+
+## Arguments
+
+### `include` 
+*(array of strings, optional)*
+
+A json array of categories to add debug logging
+     
+
+
+```json
+[
+     "category"   (string) the valid logging category
+     ,...
+]
+```
+
+
+
+### `exclude` 
+*(array of strings, optional)*
+
+A json array of categories to remove debug logging
+     
+
+```json
+[
+     "category"   (string) the valid logging category
+     ,...
+]
+```
+
+
+
+
+## Examples
+```bash
+pacprotocol-cli logging "[\"all\"]" "[\"http\"]"
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "logging", "params": [["all"], "[libevent]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```json
+{                   #(json object where keys are the logging categories, and values indicates its status
+  "category": 0|1,  #(numeric) if being debug logged or not. 0:inactive, 1:active
+  ...
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help logging
+```
+Will produce following output:
+
+
+```bash
+logging ( <include> <exclude> )
+Gets and sets the logging configuration.
+When called without an argument, returns the list of categories with status that are currently being debug logged or not.
+When called with arguments, adds or removes categories from debug logging and return the lists above.
+The arguments are evaluated in order "include", "exclude".
+If an item is both included and excluded, it will thus end up being excluded.
+The valid logging categories are: net, tor, mempool, http, bench, zmq, db, rpc, estimatefee, addrman, selectcoins, reindex, cmpctblock, rand, prune, proxy, mempoolrej, libevent, coindb, qt, leveldb, chainlocks, gobject, instantsend, keepass, llmq, llmq-dkg, llmq-sigs, mnpayments, mnsync, coinjoin, spork, netconn
+In addition, the following are available as category names with special meanings:
+  - "all",  "1" : represent all logging categories.
+  - "pacprotocol" activates all PAC Protocol-specific categories at once.
+To deactivate all categories at once you can specify "all" in <exclude>.
+  - "none", "0" : even if other logging categories are specified, ignore all of them.
+
+Arguments:
+1. "include"        (array of strings, optional) A json array of categories to add debug logging
+     [
+       "category"   (string) the valid logging category
+       ,...
+     ]
+2. "exclude"        (array of strings, optional) A json array of categories to remove debug logging
+     [
+       "category"   (string) the valid logging category
+       ,...
+     ]
+
+Result:
+{                   (json object where keys are the logging categories, and values indicates its status
+  "category": 0|1,  (numeric) if being debug logged or not. 0:inactive, 1:active
+  ...
+}
+
+Examples:
+> pacprotocol-cli logging "[\"all\"]" "[\"http\"]"
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "logging", "params": [["all"], "[libevent]"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

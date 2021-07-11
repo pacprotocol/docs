@@ -1,0 +1,74 @@
+---
+sidebar_position: 43
+---
+
+# getblockhashes
+## Command
+
+```bash
+pacprotocol-cli getblockhashes timestamp
+```
+
+Returns array of hashes of blocks within the timestamp range provided.
+
+
+
+## Arguments
+
+### `high` <span class='asterisk'>*</span>
+*(numeric, required)*
+
+The newer block timestamp
+
+
+### `low` <span class='asterisk'>*</span>
+*(numeric, required)*
+
+The older block timestamp
+
+
+## Examples
+```bash
+pacprotocol-cli getblockhashes 1231614698 1231024505
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+[
+  "hash"         #(string) The block hash
+]
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help getblockhashes
+```
+Will produce following output:
+
+
+```bash
+getblockhashes timestamp
+
+Returns array of hashes of blocks within the timestamp range provided.
+
+Arguments:
+1. high         (numeric, required) The newer block timestamp
+2. low          (numeric, required) The older block timestamp
+
+Result:
+[
+  "hash"         (string) The block hash
+]
+
+Examples:
+> pacprotocol-cli getblockhashes 1231614698 1231024505
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "getblockhashes", "params": [1231614698, 1231024505] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+

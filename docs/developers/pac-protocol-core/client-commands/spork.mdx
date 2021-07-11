@@ -1,0 +1,81 @@
+---
+sidebar_position: 138
+---
+
+# spork
+## Command
+
+```bash
+pacprotocol-cli spork "command"
+```
+
+Shows information about current state of sporks
+
+
+
+## Arguments
+
+### `command` <span class='asterisk'>*</span>
+*(string, required)*
+
+'show' to show all current spork values, 'active' to show which sporks are active
+
+
+## Examples
+```bash
+pacprotocol-cli spork show
+```
+
+```bash
+curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "spork", "params": ["show"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+```
+## Result
+```bash
+For 'show':
+{
+  "SPORK_NAME" : spork_value,    #(number) The value of the specific spork with the name SPORK_NAME
+  ...
+}
+For 'active':
+{
+  "SPORK_NAME" : true|false,     #(boolean) 'true' for time-based sporks if spork is active and 'false' otherwise
+  ...
+}
+```
+
+
+___
+
+Running following help command
+```bash
+ pacprotocol-cli help spork
+```
+Will produce following output:
+
+
+```bash
+spork "command"
+
+Shows information about current state of sporks
+
+Arguments:
+1. "command"                     (string, required) 'show' to show all current spork values, 'active' to show which sporks are active
+
+Result:
+For 'show':
+{
+  "SPORK_NAME" : spork_value,    (number) The value of the specific spork with the name SPORK_NAME
+  ...
+}
+For 'active':
+{
+  "SPORK_NAME" : true|false,     (boolean) 'true' for time-based sporks if spork is active and 'false' otherwise
+  ...
+}
+
+Examples:
+> pacprotocol-cli spork show
+> curl --user myusername --data-binary '{"jsonrpc": "1.0", "id":"curltest", "method": "spork", "params": ["show"] }' -H 'content-type: text/plain;' http://127.0.0.1:1111/
+
+```
+
