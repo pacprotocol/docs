@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://docs.pacprotocol.com/blog</id>
-    <title>PAC Protocol Blog</title>
+    <title>PAC Protocol Documentation Blog</title>
     <updated>2019-05-30T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://docs.pacprotocol.com/blog"/>
-    <subtitle>PAC Protocol Blog</subtitle>
+    <subtitle>PAC Protocol Documentation Blog</subtitle>
     <icon>https://docs.pacprotocol.com/img/favicon.ico</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
