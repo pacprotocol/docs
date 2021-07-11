@@ -1,6 +1,6 @@
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'PAC Protocol',
+  title: 'PAC Protocol Documentation',
   tagline: 'All-in-one Documentations',
 
   url: 'https://docs.pacprotocol.com',
