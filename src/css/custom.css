@@ -15,6 +15,10 @@
   --ifm-color-primary-lighter: #6eecfd;
   --ifm-color-primary-lightest: #adf5ff;
 
+  --ifm-color-info: var(--ifm-color-primary);
+  --ifm-color-warning: #FD8F3B;
+  --ifm-color-danger: #FC0062;
+
   --ifm-code-font-size: 95%;
   --ifm-color-text-dark: #272A2B;
   --ifm-color-black: #272A2B;

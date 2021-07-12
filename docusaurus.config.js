@@ -7,8 +7,9 @@ module.exports = {
   baseUrl: '/',
   organizationName: 'pacprotocol', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
-  trailingSlash: false,
-
+  customFields: {
+    trailingSlash: false
+  },
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

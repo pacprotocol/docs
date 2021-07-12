@@ -23,7 +23,7 @@ axios.post("http://lol:lol@localhost:1111",
     //Not included in help, hence manually adding this
     commands.push("setstaking");
 
-    const doc_path = path.resolve(__dirname, "../docs/developers/pac-protocol-core/client-commands/");
+    const doc_path = path.resolve(__dirname, "../docs/pac-protocol-core/client-commands/");
 
     const files = await fs.readdir(doc_path + "/");
 

@@ -1,0 +1,36 @@
+---
+sidebar_position: 2
+---
+
+# Creating Raw Transactions
+
+If you need absolute control of the transactions, you can create your own & broadcast transaction without using [sendtoaddress](/pac-protocol-core/client-commands/sendtoaddress) or [sendmany](/pac-protocol-core/client-commands/sendmany)
+
+### Make Transaction:
+
+```bash
+createrawtransaction [{"txid":"id","vout":n},...] {"address":amount,"data":"hex",...} (locktime)
+```
+[createrawtransaction documentation](/pac-protocol-core/client-commands/createrawtransaction)
+
+Returns the value of raw transaction in string (encoded as hex).
+
+Before broadcasting you need to sign the transaction first to validate that you own input's private key
+
+### Sign Transaction:
+
+```bash
+signrawtransaction <raw-transaction-hex> ( [{"txid":"id","vout":n,"scriptPubKey":"hex","redeemScript":"hex"},...] ["privatekey1",...] sighashtype )
+```
+[signrawtransaction documentation](/pac-protocol-core/client-commands/signrawtransaction)
+
+Returns the value of raw signed transaction which can be used to broadcast it into network.
+
+### Broadcast Transaction:
+
+```
+sendrawtransaction <raw-signed-transaction-hex> (allowhighfees instantsend bypasslimits)
+```
+[signrawtransaction documentation](/pac-protocol-core/client-commands/sendrawtransaction)
+
+Returns the txid of your transaction which can be now tracked in explorer or in wallet itself.

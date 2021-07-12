@@ -2,7 +2,7 @@
 sidebar_position: 1
 ---
 
-# Getting Started (with HTTP API)
+# Getting Started
 
 Source Code of **PAC Protocol Core** can be found under [GitHub pacprotocol/pacprotocol](https://github.com/pacprotocol/pacprotocol)
 
@@ -20,7 +20,7 @@ For the following step we're using the user root. For production usage it's reco
 
 ### Step 1 - Get/Setup binaries of PAC Protocol Core
 
-We're pulling the binaries of "PAC Global v0.15.2" and grant permission of "pacprotocold" and "pacprotocol-cli" to make it executeable.
+We're pulling the binaries of "PAC Protocol v0.17" and grant permission of "pacprotocold" and "pacprotocol-cli" to make it executeable.
 
 ```bash
 cd /root # we're using root directory in this example. You can obviously choose your owh directory.
@@ -56,7 +56,7 @@ listen=1
 server=1
 daemon=1
 ```
-You can find more options under [Daemon Options](/developers/pac-protocol-core/daemon-options)
+You can find more options under [Daemon Options](/pac-protocol-core/daemon-options)
 
 Save it and back to terminal.
 
@@ -145,8 +145,8 @@ curl --data-binary '{"jsonrpc":"1.0","id":"curltext","method":"mnsync","params":
 
 If `"isBlockchainSynced"` is `true`, it means the blockchain on your machine is fully synced!
 
-It can take some time to sync fully. Luckly we have a solution for that in order to sync it faster - please see the following tutorial [Install Bootstrap](/developers/pac-protocol-core/install-bootstrap)
+It can take some time to sync fully. Luckly we have a solution for that in order to sync it faster - please see the following tutorial [Install Bootstrap](/pac-protocol-core/install-bootstrap)
 
 Congratulation. Now you have a self-hosted PAC Protocol HTTP API which you can use on your language/framework by using HTTP requests!
 
-Please see [Client Commands](/developers/pac-protocol-core/client-commands/getaddressbalance) for more information of commands usage & http
+Please see [Client Commands](/pac-protocol-core/client-commands/getaddressbalance) for more information of commands usage & http
