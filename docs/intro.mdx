@@ -15,14 +15,29 @@ Each Masternode registered with PAC Protocol is required to have 500,000 native 
 
 ## Proof of Stake
 
-PAC Protocol has an advertised average block rate of 2.5 minutes per block. This is structured in an eco-friendly decentralized manner, leading the way for scalability and wide-spread network support. POSv3 is the staking consensusadopted by PAC Protocol, which requires  minimal resources dedicated to the network  for consistent block scheduling.
+PAC Protocol has an advertised average block rate of 150 seconds per block. This is structured in an eco-friendly decentralized manner, leading the way for scalability and wide-spread network support. POSv3 is the staking consensusadopted by PAC Protocol, which requires  minimal resources dedicated to the network for consistent block scheduling.
 
 ## Inflation and Transactions
 
-Each block provides the network inflation rate of $PAC coins to one Masternode that is verified by the network, and one POS staking user that provides the minimal resources for block creation. When a Masternode is rewarded from the network, it receives 8280 $PAC coins. These rewards can be encrypted and stored to accumulate 500,000 $PAC for another Masternode registry, or transacted openly across the network with instant speed for minimal fees. PAC Protocol also boasts enhanced blockchain features that originated from Bitcoin. Those rewarded for their contribution to POS block creation receive an inflation rate of 100 $PAC per block.
+Each block mints $PAC coins to users of the network.
+- 8280 $PAC coins to a masternode owner (Masternode Reward)
+- 100 PAC to the input that minted the block (Staking reward)
+- 10,119 $PAC coins reserved for the On Chain Budget
+
+The masternode reward and the staking reward can be transacted openly across the network with instant speed for minimal fees. PAC Protocol also boasts enhanced blockchain features that originated from Bitcoin. The 10,119 $PAC is only minted if there is a OCB approved by the network of masternodes. 
+
+Transactions can be locked by InstaPAC by the masternodes utilising the Long Living Masternode Quorums (LLMQ). A Masternode can lock a transaction if one of these 3 rules is met.
+- The previous transaction is confimed by 6 blocks
+- The previous transaction is locked by an older InstaPAC transaction
+- The block containing the previous transaction is Chainlocked
+
+## Chainlocks
+
+Chainlocks is a technology for near-instant confirmation of blocks and finding near-instant consensus on the longest valid/accepted chain. ChainLocks leverages Long Living Masternode Quorums (LLMQ) Signing Requests/Sessions to accomplish this.
+
 
 ## On Chain Budget (OCB)
 
-The OCB is another feature PAC Protocol adopted to allow any network user the ability to create a proposal to the Masternodes registered. Each block contributes 10,119 $PAC to this OCB, which is held entirely within the network. This $PAC accumulates within each OCB cycled block. Proposals that are submitted to the registered Masternodes will then be required to reach a 10% threshold on YES votes versus NO/Abstain votes. Each registered Masternode is entitled to one vote per proposal. This decentralized method for proposal decision making is put in the hands of those contributing Masternode resources for PAC Protocol. The amount of $PAC requested during each OCB cycle will be sent to those proposals that are accepted by the Masternodes registered. In the event that not all of the $PAC supply in the OCB block is requested, but only a portion is or no proposals are accepted/no proposals are submitted in an OCB cycle, the $PAC that was accumulating for OCB budget will not be created: these are essentially “burned,” or considered to have never existed. This provides Masternodes the ability to control the inflation of $PAC that users may request to be put to use for network growth or network related use cases.
+The OCB is another feature PAC Protocol adopted to allow any network user the ability to create a proposal to the Masternodes registered. Each block contributes 10,119 $PAC to this OCB, which is held entirely within the network. This $PAC accumulates within each OCB cycled block each cycle is 16616 blocks which is about every month. Proposals that are submitted to the registered Masternodes will then be required to reach a 10% threshold on YES votes versus NO/Abstain votes. Each registered Masternode is entitled to one vote per proposal. This decentralized method for proposal decision making is put in the hands of those contributing Masternode resources for PAC Protocol. The amount of $PAC requested during each OCB cycle will be sent to those proposals that are accepted by the Masternodes registered. In the event that not all of the $PAC supply in the OCB block is requested, but only a portion is or no proposals are accepted/no proposals are submitted in an OCB cycle, the $PAC that was accumulating for OCB budget will not be created: these are essentially “burned,” or considered to have never existed. This provides Masternodes the ability to control the inflation of $PAC that users may request to be put to use for network growth or network related use cases.
 
 PAC Protocol is designed to provide a network ecosystem worthy of massive decentralization and utility adoption. The internet we know today runs almost entirely on a centralized platform, leading to the core cause and issue for centralized hacks, which ends up in billions of dollars of damage. Choosing PAC Protocol allows users to build products designed for decentralized optimization, security, and speed. These products can be presented to the registered Masternodes, which then have the choice to support the additional utility or network adaptions. Each registered Masternode has its own right to support additional use cases or not. A Masternode is only ever obligated to be fully connected with PAC Protocol.
