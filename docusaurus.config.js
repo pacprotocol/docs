@@ -19,6 +19,7 @@ module.exports = {
     locales: ['en']
   },
   themeConfig: {
+    autoCollapseSidebarCategories: true,
     navbar: {
       title: 'PAC Protocol Documentation',
       logo: {
@@ -174,7 +175,9 @@ module.exports = {
         docs: {
           routeBasePath: "/",
           path: "docs",
+          breadcrumbs: true,
           sidebarPath: require.resolve('./sidebars.js'),
+          sidebarCollapsed: true,
           // Please change this to your repo.
           editUrl:
             'https://github.com/pacprotocol/docs/edit/master/',
