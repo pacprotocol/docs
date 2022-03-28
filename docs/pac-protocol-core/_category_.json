@@ -1,4 +1,6 @@
 {
   "label": "PAC Protocol Core",
-  "position": 5
+  "position": 5,
+  "collapsible": false,
+  "className": "menu__header"
 }

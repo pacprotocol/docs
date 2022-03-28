@@ -106,3 +106,18 @@
 pre {
   background-color: var(--ifm-pre-background) !important;
 }
+
+.menu__header > .menu__list-item-collapsible > .menu__link {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  color: var(--ifm-pre-background);
+}
+
+.menu__header > .menu__list-item-collapsible > .menu__link::after {
+  display: none;
+}
+
+.menu__list-item-collapsible:hover {
+  background: none;
+}
